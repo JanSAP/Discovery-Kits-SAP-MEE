@@ -2546,8 +2546,10 @@ async function submitAiIntel(){
 
   var prompt=(function(){
   var roleDesc=currentRole==='sde'?'Sales Development Rep (SDR/BDR) doing cold outreach. Goal: book a meeting. Focus on trigger events, who to call first, voicemail hooks, email hooks, social proof for initial engagement.':currentRole==='sa'?'Solution Advisor (Pre-Sales). Goal: prove technical fit and advance to PoC/decision. Focus on technical architecture assessment, demo scenario design, integration landscape, competitive differentiation on capabilities, PoC feasibility.':'Account Executive running discovery/deal cycle. Goal: advance the opportunity. Focus on MEDDPICC qualification, stakeholder mapping, commercial positioning, deal strategy, multi-threading.';
+  var _lang=lang==='de'?'German':'English';
   var base=`SAP sales prep assistant. Rep meeting customer. ROLE: ${roleDesc}
 Tailor ALL recommendations specifically to this role perspective.
+RESPOND IN ${_lang}. All text fields (opener, watchOut, descriptions, questions, differentiators, talkTrack, etc.) MUST be written in ${_lang}.${lang==='de'?' Use professional German business language (Sie-Form). Keep field NAMES in English (JSON keys unchanged).':''}
 
 CUSTOMER: ${company}${url?' | '+url:''}${notes?' | '+notes:''}${personas.length?' | Meeting: '+personas.join(','):''}
 
@@ -4177,7 +4179,8 @@ function startLinkedInWithIntel(){
   var ref1=null;
   if(k.refs&&k.refs[L]&&k.refs[L].length){
     var _detInd=(snapshot.industry||'').toLowerCase();
-    ref1=k.refs[L].find(function(x){return _detInd&&x.industry&&(_detInd.indexOf(x.industry.toLowerCase())>=0||x.industry.toLowerCase().indexOf(_detInd)>=0);})||k.refs[L].find(function(x){var words=_detInd.split(/[\s,\/]+/);return words.some(function(w){return w.length>3&&x.industry&&x.industry.toLowerCase().indexOf(w)>=0;});})||k.refs[L][0];
+    if(_detInd){ref1=k.refs[L].find(function(x){return x.industry&&(_detInd.indexOf(x.industry.toLowerCase())>=0||x.industry.toLowerCase().indexOf(_detInd)>=0);})||k.refs[L].find(function(x){var words=_detInd.split(/[\s,\/]+/);return words.some(function(w){return w.length>3&&x.industry&&x.industry.toLowerCase().indexOf(w)>=0;});});}
+    if(!ref1&&r.industryFocus>=0&&k.indDiff&&k.indDiff[L]&&k.indDiff[L][r.industryFocus]){var _indName=k.indDiff[L][r.industryFocus].i.toLowerCase();ref1=k.refs[L].find(function(x){return x.industry&&x.industry.toLowerCase().indexOf(_indName)>=0;});}
   }
   var roi1='';
   if(r.roiHighlight&&r.roiHighlight.length&&k.roi&&k.roi[L]){roi1=k.roi[L][r.roiHighlight[0]]||'';}
@@ -4474,7 +4477,8 @@ function startEmailWithIntel(){
   var ref1=null;
   if(k.refs&&k.refs[L]&&k.refs[L].length){
     var _detInd=(snapshot.industry||'').toLowerCase();
-    ref1=k.refs[L].find(function(x){return _detInd&&x.industry&&(_detInd.indexOf(x.industry.toLowerCase())>=0||x.industry.toLowerCase().indexOf(_detInd)>=0);})||k.refs[L].find(function(x){var words=_detInd.split(/[\s,\/]+/);return words.some(function(w){return w.length>3&&x.industry&&x.industry.toLowerCase().indexOf(w)>=0;});})||k.refs[L][0];
+    if(_detInd){ref1=k.refs[L].find(function(x){return x.industry&&(_detInd.indexOf(x.industry.toLowerCase())>=0||x.industry.toLowerCase().indexOf(_detInd)>=0);})||k.refs[L].find(function(x){var words=_detInd.split(/[\s,\/]+/);return words.some(function(w){return w.length>3&&x.industry&&x.industry.toLowerCase().indexOf(w)>=0;});});}
+    if(!ref1&&r.industryFocus>=0&&k.indDiff&&k.indDiff[L]&&k.indDiff[L][r.industryFocus]){var _indName=k.indDiff[L][r.industryFocus].i.toLowerCase();ref1=k.refs[L].find(function(x){return x.industry&&x.industry.toLowerCase().indexOf(_indName)>=0;});}
   }
   var roi1='';
   if(r.roiHighlight&&r.roiHighlight.length&&k.roi&&k.roi[L]){roi1=k.roi[L][r.roiHighlight[0]]||'';}
