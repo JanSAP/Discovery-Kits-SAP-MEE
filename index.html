@@ -130,6 +130,46 @@ body{font-family:'72','Inter',-apple-system,sans-serif;background:var(--w);color
 .kit-act:hover{background:#edf4ff;border-color:var(--blue);transform:translateY(-2px)}
 .kit-act-icon{font-size:22px}
 .kit-act-label{font-size:12px;font-weight:600;color:var(--deep)}
+
+/* Change 8: Promoted Do Not Say */
+.sec.sec-dontsay{border-left:3px solid #DC2626;background:#FFF5F5;border-radius:8px;margin-bottom:14px}
+.sec.sec-dontsay .sh{background:transparent}
+.sec.sec-dontsay .ic{background:#FEE2E2;color:#DC2626}
+.sec.sec-dontsay h3{color:#B91C1C}
+.sec.sec-dontsay .sb li{padding:3px 11px;margin-bottom:1px;line-height:1.45}
+
+/* Change 9: Stakeholder filter chips */
+.stake-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid #E5E7EB}
+.stake-chip{padding:4px 10px;border-radius:50px;font-size:10px;font-weight:600;border:1px solid #D1D5DB;background:#fff;cursor:pointer;transition:all .15s;color:#374151}
+.stake-chip:hover{border-color:#0070F2;color:#0070F2;background:#E1F4FF}
+.stake-chip.active{background:#0070F2;color:#fff;border-color:#0070F2}
+.stake-item{transition:opacity .15s}
+.stake-item.dimmed{display:none}
+
+/* Change 10: Visual hierarchy for priority sections */
+.sec.sec-priority .sh h3{font-size:15px}
+.sec.sec-priority .ic{transform:scale(1.1)}
+.sec.sec-secondary .sh h3{font-size:12px;opacity:.85}
+.sec.sec-secondary .ic{opacity:.7;transform:scale(.9)}
+
+/* Prep mode card */
+.prep-card{background:#fff;border:1.5px solid #E1E2E6;border-radius:12px;padding:24px;max-width:600px;margin:0 auto}
+.prep-row{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #F3F4F6}
+.prep-row:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.prep-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px;display:block}
+.prep-label-say{color:#16A34A}
+.prep-label-dont{color:#DC2626}
+.prep-label-ask{color:#0070F2}
+.prep-label-stake{color:#7C3AED}
+.prep-content{font-size:13px;line-height:1.6;color:#1F2937}
+.prep-content li{margin-bottom:4px}
+.prep-actions{display:flex;gap:10px;margin-top:18px;justify-content:center}
+.prep-actions button{padding:8px 18px;border-radius:50px;font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all .12s}
+.prep-copy{background:#0070F2;color:#fff}
+.prep-copy:hover{background:#0054B4}
+.prep-deeper{background:#E1F4FF;color:#0070F2;border:1px solid #0070F2}
+.prep-deeper:hover{background:#0070F2;color:#fff}
+
 @media print{body{overflow:visible;height:auto}.hd,.ln,.sn,.na,.bd,.lt,.col-btn,.sh-tog,.ai-fab,.contact-chip,.kit-actions,.mode-toggle,.switch-role-btn{display:none!important}.sb.hidden,.it.hidden{display:block!important}.mn{overflow:visible}.kv{overflow:visible;padding:20px}.sec{break-inside:avoid}.el{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 @media(max-width:900px){.tc{grid-template-columns:1fr}.kv{padding:16px 12px}.na{display:none}.hd{padding:10px 16px;flex-wrap:nowrap;gap:8px}.ln{padding:0 12px}.sn{padding:6px 12px}.sw input{width:160px}}
 /* Mobile responsive */
@@ -346,6 +386,20 @@ body{font-family:'72','Inter',-apple-system,sans-serif;background:var(--w);color
 .ee-red-overlay{position:fixed;inset:0;background:rgba(255,60,60,.28);z-index:9998;pointer-events:none;opacity:0}
 @keyframes eeRedBlink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
 .ee-toast.show{opacity:1}
+.ee-pipeline-rain{position:fixed;inset:0;z-index:9997;pointer-events:none;overflow:hidden;display:none}
+.ee-pipeline-rain.active{display:block}
+.ee-rain-drop{position:absolute;top:-40px;font-size:18px;opacity:.85;animation:eeRainFall linear forwards}
+@keyframes eeRainFall{0%{transform:translateY(0)}100%{transform:translateY(110vh)}}
+.ee-hacker-overlay{position:fixed;inset:0;z-index:9996;pointer-events:none;opacity:0;transition:opacity .4s;background:#000}
+.ee-hacker-overlay.active{opacity:1;pointer-events:auto}
+.ee-hacker-overlay .ee-hacker-content{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Courier New',monospace;color:#00ff41;padding:40px}
+.ee-hacker-overlay .ee-hacker-line{font-size:13px;opacity:0;animation:eeHackerType .3s forwards;margin-bottom:6px;text-align:left;width:100%;max-width:600px}
+@keyframes eeHackerType{0%{opacity:0;transform:translateX(-10px)}100%{opacity:1;transform:translateX(0)}}
+.ee-hacker-overlay .ee-hacker-cursor{display:inline-block;width:8px;height:14px;background:#00ff41;animation:eeBlink .6s infinite}
+@keyframes eeBlink{0%,50%{opacity:1}51%,100%{opacity:0}}
+.ee-hacker-scanline{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,65,.03) 2px,rgba(0,255,65,.03) 4px);pointer-events:none}
+
+.ee-comic-mode *{font-family:'Comic Sans MS','Comic Sans',cursive!important}
 @keyframes rainbowWave{
 0%{box-shadow:0 0 0 0 transparent}
 10%{box-shadow:0 0 8px 2px rgba(255,0,0,.4)}
@@ -560,7 +614,7 @@ body{font-family:'72','Inter',-apple-system,sans-serif;background:var(--w);color
 .rs-desc{font-size:11px;color:#666;line-height:1.5}
 .rs-hint{margin-top:20px;font-size:12px;color:#8C8C8C;text-align:center;letter-spacing:.2px}
 .rs-lang{position:absolute;top:24px;right:32px}
-.rs-logo{height:28px;margin-bottom:20px}
+.rs-logo{height:28px;margin-bottom:20px;cursor:pointer}
 @media(max-width:700px){.rs-grid{flex-direction:column;gap:12px}.rs-card{padding:20px 16px;flex-direction:row;text-align:left;gap:14px}.rs-icon{width:42px;height:42px;flex-shrink:0}}
 
 /* --- Header fix: never wrap --- */
@@ -751,13 +805,629 @@ body.role-sa .tool-icon-btn.linkedin,body.role-sa .tool-icon-btn.email{display:n
 .oc-content.hidden{display:none}
 @media(max-width:700px){.oncall-body{grid-template-columns:1fr}}
 
-.switch-role-btn{background:#0070F2;border:1.5px solid #0070F2;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:600;color:#fff;cursor:pointer;white-space:nowrap;transition:all .2s}
-.switch-role-btn:hover{background:#0054B4;border-color:#0054B4}
+.switch-role-btn{background:#3D4A5C;border:1.5px solid #3D4A5C;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;color:#fff;cursor:pointer;white-space:nowrap;transition:all .2s}
+.switch-role-btn:hover{background:#2C3642;border-color:#2C3642}
 
 /* Learning section hint */
 .sec.learning-sec{border-left:3px solid #E1F4FF;background:#FDFDFF}
 .sec.learning-sec .sh{background:#F8FBFF}
 .learning-badge{display:inline-block;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#0070F2;background:#E1F4FF;padding:2px 6px;border-radius:3px;margin-left:8px;vertical-align:middle}
+
+
+/* ================================================================
+   RESPONSIVE / MOBILE OPTIMIZATION v33
+   Additive styles — preserves all desktop behavior
+   ================================================================ */
+
+/* --- Safe area support for notched devices --- */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body { padding-bottom: env(safe-area-inset-bottom); }
+  .hd { padding-left: max(14px, env(safe-area-inset-left)); padding-right: max(14px, env(safe-area-inset-right)); }
+  .ai-fab { bottom: calc(24px + env(safe-area-inset-bottom)); left: calc(24px + env(safe-area-inset-left)); }
+  .contact-chip { bottom: calc(24px + env(safe-area-inset-bottom)); right: calc(24px + env(safe-area-inset-right)); }
+}
+
+/* --- Touch optimization (only on small touch screens) --- */
+@media (pointer: coarse) and (max-width: 900px) {
+  .mode-btn, .lb, .tb-btn, .col-btn, .sc, .lt2,
+  .compare-chip, .li-persona-tab, .em-persona-tab,
+  .sde-badge, .oncall-stat, .play-kit {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sh { min-height: 44px; display: flex; align-items: center; }
+  .tool-icon-btn { min-width: 36px; min-height: 36px; }
+  .oncall-panel li, .demo-panel li, .coldcall-panel li,
+  .sb li { min-height: 40px; display: flex; align-items: center; }
+  .kit-act { min-height: 48px; }
+  .na { min-width: 36px; min-height: 36px; }
+}
+@media (pointer: coarse) {
+  /* Disable hover-dependent tooltips on all touch devices */
+  .tool-tip { display: none !important; }
+}
+
+/* --- Tablet breakpoint (601px - 900px) refinements --- */
+@media (min-width: 601px) and (max-width: 900px) {
+  .rs-grid { gap: 16px; padding: 0 20px; }
+  .rs-card { padding: 24px 18px 20px; }
+  .kv { padding: 20px 16px 60px; }
+  .tc { grid-template-columns: 1fr; }
+  .kit-actions { flex-wrap: wrap; }
+  .compare-grid { grid-template-columns: 1fr !important; }
+  .oncall-body { grid-template-columns: 1fr; }
+  .demo-body, .coldcall-body { grid-template-columns: 1fr; }
+  .sa-demo-grid, .sa-integ-grid, .sa-dil-grid { grid-template-columns: 1fr; }
+  .sde-hooks { grid-template-columns: 1fr; }
+}
+
+/* --- Primary mobile breakpoint (max 600px) — enhancements --- */
+@media (max-width: 600px) {
+  /* Prevent horizontal scroll globally */
+  html, body { overflow-x: hidden; max-width: 100vw; }
+
+  /* --- Header reorganization --- */
+  .hd {
+    flex-wrap: wrap !important;
+    padding: 8px 12px !important;
+    gap: 6px !important;
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    background: #fff;
+    border-bottom: 1px solid #E1E2E6;
+  }
+  .hl { flex: 1; min-width: 0; gap: 8px; }
+  .hr {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+  .switch-role-btn {
+    padding: 6px 12px;
+    font-size: 10px;
+    order: -1;
+  }
+  .mode-toggle { order: 0; margin-right: auto; }
+  .mode-btn { padding: 6px 10px; font-size: 10px; }
+  .lt { order: 1; }
+  .sw {
+    order: 10;
+    width: 100%;
+    margin-top: 2px;
+  }
+  .sw input {
+    width: 100% !important;
+    font-size: 13px !important;
+    padding: 10px 12px 10px 32px !important;
+    border-radius: 8px;
+  }
+  /* Hide tool buttons row - show only live/phone */
+  .tool-icon-btn { display: none; }
+  .tool-icon-btn.live { display: flex; order: 2; }
+
+  /* --- LoB navigation (category tabs) --- */
+  .ln {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 8px !important;
+    gap: 0 !important;
+  }
+  .ln::-webkit-scrollbar { display: none; }
+  .lt2 {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  /* --- Sub-category chips --- */
+  .sn {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap !important;
+  }
+  .sn::-webkit-scrollbar { display: none; }
+  .sc {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  /* --- Kit view container --- */
+  .kv {
+    padding: 12px 10px 80px !important;
+  }
+  .kc {
+    max-width: 100% !important;
+    padding: 0;
+  }
+
+  /* --- Kit title area --- */
+  .kt {
+    flex-direction: column !important;
+    gap: 6px !important;
+    margin-bottom: 12px !important;
+  }
+  .kt h1 { font-size: 16px !important; line-height: 1.3; }
+
+  /* --- Section headers (collapsible) --- */
+  .sh {
+    padding: 12px 14px !important;
+    gap: 8px;
+  }
+  .sh h3 { font-size: 11px !important; }
+  .ic { width: 22px; height: 22px; font-size: 10px; }
+  .cp-btn {
+    opacity: 1 !important;
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin-left: auto;
+    padding: 4px 8px;
+    font-size: 9px;
+    flex-shrink: 0;
+  }
+
+  /* --- Section body --- */
+  .sb { padding: 10px 12px !important; }
+  .sb li {
+    font-size: 12px !important;
+    padding: 8px 10px !important;
+    line-height: 1.6;
+  }
+  .el { padding: 12px 14px !important; }
+  .el-t { font-size: 12px !important; line-height: 1.6; }
+
+  /* --- Do Not Say callout --- */
+  .sec-dontsay .sb {
+    padding: 10px 12px !important;
+  }
+  .sec-dontsay li {
+    font-size: 12px !important;
+    padding: 8px 10px !important;
+  }
+
+  /* --- Stakeholder Map chips --- */
+  .stake-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .stake-chip {
+    font-size: 10px;
+    padding: 6px 10px;
+    min-height: 32px;
+  }
+
+  /* --- Kit actions (bottom of kit) --- */
+  .kit-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-top: 16px !important;
+    padding-top: 14px !important;
+  }
+  .kit-act {
+    padding: 14px 12px !important;
+    min-height: 48px;
+    border-radius: 10px;
+  }
+  .kit-act-icon { font-size: 18px; }
+  .kit-act-label { font-size: 12px; }
+
+  /* --- SDE-specific mobile --- */
+  .sde-hero { margin-bottom: 14px; }
+  .sde-hero-hd { padding: 10px 14px; flex-wrap: wrap; gap: 6px; }
+  .sde-hero-hd h3 { font-size: 11px; }
+  .sde-hero-body { padding: 12px; }
+  .sde-hero-sec { padding: 10px 12px; margin-bottom: 10px; }
+  .sde-hero-label { font-size: 8px; }
+  .sde-hero-text { font-size: 12px; }
+  .sde-badges { padding: 10px 12px; gap: 6px; }
+  .sde-badge { padding: 8px 10px; font-size: 11px; }
+  .sde-cadence { padding: 10px 12px; }
+  .sde-step { padding: 8px 0 8px 20px; }
+  .sde-hooks { grid-template-columns: 1fr !important; padding: 10px 12px; gap: 8px; }
+  .sde-hook { padding: 10px 12px; }
+  .sde-proof { padding: 10px 12px; }
+  .sde-proof-item { padding: 8px 12px; font-size: 11px; }
+
+  /* --- SA-specific mobile --- */
+  .sa-demo-grid { grid-template-columns: 1fr !important; padding: 10px 12px; gap: 10px; }
+  .sa-demo-card { padding: 14px 12px; }
+  .sa-integ-grid { grid-template-columns: 1fr !important; padding: 10px 12px; }
+  .sa-dil-grid { grid-template-columns: 1fr !important; padding: 10px 12px; }
+  .sa-poc-grid { grid-template-columns: 1fr !important; }
+  .sa-poc-cell { border-right: none !important; }
+  .sa-refarch { margin: 0 10px 12px; padding: 12px 14px; }
+
+  /* --- Prep mode card (briefing) --- */
+  .prep-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 100vh !important;
+    height: 100vh;
+    border-radius: 0 !important;
+    padding: 16px !important;
+    overflow-y: auto;
+  }
+  .prep-overlay {
+    align-items: stretch !important;
+    padding: 0;
+  }
+  .prep-modal h2 { font-size: 15px !important; }
+  .prep-cat { font-size: 10px; margin: 12px 0 4px; }
+  .prep-item { font-size: 12px; padding: 8px 0; }
+
+  /* --- Summary modal --- */
+  .summ-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 100vh !important;
+    height: 100vh;
+    border-radius: 0 !important;
+    padding: 16px !important;
+  }
+  .summ-overlay { align-items: stretch !important; padding: 0; }
+
+  /* --- Quiz modal --- */
+  .quiz-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 100vh !important;
+    height: 100vh;
+    border-radius: 0 !important;
+    padding: 16px !important;
+  }
+  .quiz-overlay { align-items: stretch !important; padding: 0; }
+  .quiz-q { padding: 10px; }
+  .quiz-q p { font-size: 12px; }
+  .quiz-opt { font-size: 12px; padding: 6px 0; }
+
+  /* --- Compare overlay (full-screen) --- */
+  .compare-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 100vh !important;
+    height: 100vh;
+    border-radius: 0 !important;
+    padding: 14px !important;
+    overflow-y: auto;
+  }
+  .compare-overlay { align-items: stretch !important; }
+  .compare-header h2 { font-size: 15px; }
+  .compare-picker { gap: 4px; }
+  .compare-chip { font-size: 10px; padding: 6px 10px; }
+  .compare-grid { grid-template-columns: 1fr !important; gap: 14px; }
+  .compare-col { padding: 12px; }
+  .compare-col h3 { font-size: 13px; }
+  .compare-col p, .compare-col li { font-size: 12px; }
+  .connect-card { padding: 10px 12px; }
+
+  /* --- On-Call overlay (full-screen) --- */
+  .oncall-overlay {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .oncall-header { padding: 10px 14px; position: sticky; top: 0; z-index: 10; background: #fff; }
+  .oncall-header h2 { font-size: 13px; }
+  .oncall-exit { padding: 8px 14px; font-size: 12px; min-height: 36px; }
+  .oncall-body {
+    grid-template-columns: 1fr !important;
+    padding: 12px !important;
+    gap: 10px !important;
+  }
+  .oncall-pitch { padding: 12px 14px; }
+  .oncall-pitch p { font-size: 13px !important; }
+  .oncall-panel { padding: 12px 14px; }
+  .oncall-panel li { font-size: 13px; padding: 8px 6px; }
+  .oncall-warn { padding: 10px 14px; }
+  .oncall-warn-items { gap: 6px; }
+  .oncall-warn-item { font-size: 11px; padding: 6px 10px; max-width: 100%; }
+  .oncall-notes textarea { height: 60px; font-size: 13px; }
+
+  /* --- Demo mode overlay (SA) --- */
+  .demo-overlay { overflow-y: auto; }
+  .demo-hd { padding: 10px 14px; position: sticky; top: 0; z-index: 10; background: #fff; }
+  .demo-hd h2 { font-size: 13px; }
+  .demo-exit { padding: 7px 14px; font-size: 11px; }
+  .demo-body {
+    grid-template-columns: 1fr !important;
+    padding: 12px !important;
+    gap: 12px !important;
+  }
+  .demo-panel li { font-size: 12px; }
+
+  /* --- Cold Call overlay (SDE) --- */
+  .coldcall-overlay { overflow-y: auto; }
+  .coldcall-hd { padding: 10px 14px; position: sticky; top: 0; z-index: 10; background: #fff; }
+  .coldcall-hd h2 { font-size: 13px; }
+  .coldcall-exit { padding: 7px 14px; font-size: 11px; }
+  .coldcall-body {
+    grid-template-columns: 1fr !important;
+    padding: 12px !important;
+    gap: 12px !important;
+  }
+  .coldcall-panel li { font-size: 12px; }
+
+  /* --- LinkedIn overlay --- */
+  .li-overlay { overflow-y: auto; }
+  .li-header { padding: 10px 14px; position: sticky; top: 0; z-index: 10; }
+  .li-header h2 { font-size: 13px; }
+  .li-exit { padding: 7px 14px; font-size: 11px; }
+  .li-body { padding: 14px; }
+  .li-persona-tabs { gap: 4px; }
+  .li-persona-tab { padding: 7px 12px; font-size: 11px; }
+  .li-msg-card { padding: 14px 12px; }
+  .li-msg-card h3 { font-size: 12px; }
+  .li-msg-card .li-msg-text { font-size: 13px; padding: 12px; }
+  .li-persona-links { gap: 6px; }
+  .li-persona-link { padding: 6px 10px; font-size: 11px; }
+
+  /* --- Email overlay --- */
+  .em-overlay { overflow-y: auto; }
+  .em-header { padding: 10px 14px; position: sticky; top: 0; z-index: 10; }
+  .em-header h2 { font-size: 13px; }
+  .em-exit { padding: 7px 14px; font-size: 11px; }
+  .em-body { padding: 14px; }
+  .em-persona-tabs { gap: 4px; }
+  .em-persona-tab { padding: 7px 12px; font-size: 11px; }
+  .em-msg-card { padding: 14px 12px; }
+  .em-msg-card h3 { font-size: 12px; }
+  .em-msg-card .em-msg-text { font-size: 13px; padding: 12px; }
+  .em-msg-card .em-msg-subj { font-size: 12px; padding: 6px 10px; }
+
+  /* --- AI Intel modal --- */
+  .ai-overlay { padding: 0 !important; align-items: stretch !important; }
+  .ai-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 100vh !important;
+    height: 100vh;
+    border-radius: 0 !important;
+    overflow-y: auto;
+  }
+  .ai-modal-header { padding: 12px 14px; position: sticky; top: 0; z-index: 10; background: #fff; }
+  .ai-form-row { flex-direction: column; gap: 10px; }
+  .ai-form-field input, .ai-form-field textarea {
+    font-size: 14px !important;
+    padding: 10px 12px !important;
+  }
+  .ai-form-personas { gap: 6px; }
+  .ai-p-chip { font-size: 11px; padding: 8px 12px; min-height: 36px; }
+  .ai-submit-btn { padding: 12px 20px; font-size: 13px; width: 100%; }
+
+  /* --- Floating buttons (FAB + contact) --- */
+  .ai-fab {
+    bottom: 12px !important;
+    left: 12px !important;
+    width: 44px;
+    height: 44px;
+  }
+  .contact-chip {
+    bottom: 12px !important;
+    right: 12px !important;
+    padding: 5px 10px 5px 5px;
+    gap: 6px;
+  }
+  .contact-chip img { width: 24px; height: 24px; }
+  .contact-chip-label { font-size: 8px; }
+  .contact-chip-name { font-size: 10px; }
+
+  /* --- Plays view --- */
+  .plays-view { padding: 12px 10px 60px !important; }
+  .play-card { padding: 14px 12px; }
+  .play-name { font-size: 14px; }
+  .play-desc { font-size: 11px; }
+  .play-kits { gap: 4px; }
+  .play-kit { font-size: 9px; padding: 3px 8px; }
+  .play-header h1 { font-size: 18px; }
+
+  /* --- Commercial box --- */
+  .com-box { padding: 10px 12px; font-size: 11px; }
+
+  /* --- Toast notifications --- */
+  .ee-toast {
+    bottom: 70px !important;
+    left: 10px !important;
+    right: 10px !important;
+    transform: none !important;
+    font-size: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  /* --- About tooltip as bottom sheet on mobile --- */
+  .about-tooltip {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    border-radius: 14px 14px 0 0 !important;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.15) !important;
+    padding: 20px !important;
+    transform: none !important;
+    animation: aboutSheetIn .2s ease !important;
+    z-index: 99999 !important;
+  }
+  @keyframes aboutSheetIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- Role screen enhancements --- */
+  #roleScreen {
+    padding: 24px 16px !important;
+    justify-content: center;
+    overflow-y: auto;
+  }
+  .rs-title { font-size: 18px !important; }
+  .rs-sub { font-size: 12px !important; margin-bottom: 24px; }
+  .rs-grid {
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100%;
+    max-width: 400px;
+  }
+  .rs-card {
+    padding: 16px 14px !important;
+    flex-direction: row !important;
+    text-align: left !important;
+    gap: 12px !important;
+    border-radius: 12px;
+  }
+  .rs-icon { width: 40px; height: 40px; flex-shrink: 0; border-radius: 10px; }
+  .rs-icon svg { width: 20px; height: 20px; }
+  .rs-label { font-size: 13px; }
+  .rs-desc { font-size: 11px; }
+  .rs-hint { font-size: 11px; margin-top: 16px; }
+  .rs-lang { top: 16px; right: 16px; }
+  .rs-logo { height: 22px; margin-bottom: 16px; }
+
+  /* --- Navigation arrows --- */
+  .na.l, .na.r {
+    width: 32px;
+    height: 32px;
+  }
+  .na.l { left: 4px; }
+  .na.r { right: 4px; }
+
+  /* --- Progress bar --- */
+  .kit-progress { height: 2px; border-radius: 0; }
+
+  /* --- Footer (kf) --- */
+  .kf {
+    font-size: 10px;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  /* --- Smooth scroll for overflow areas --- */
+  .kv, .plays-view, .oncall-body, .demo-body, .coldcall-body,
+  .li-body, .em-body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* --- Ensure images don't overflow --- */
+  img { max-width: 100%; height: auto; }
+
+  /* --- Stakeholder/persona tables --- */
+  .stake-table, .persona-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 11px;
+  }
+}
+
+/* --- Extra-small screens (320-375px) --- */
+@media (max-width: 375px) {
+  .hd { padding: 6px 10px !important; }
+  .logo { height: 16px !important; }
+  .ht { font-size: 11px !important; }
+  .mode-btn { padding: 5px 7px; font-size: 9px; }
+  .switch-role-btn { padding: 5px 9px; font-size: 9px; }
+  .lb { padding: 4px 8px; font-size: 9px; }
+  .kt h1 { font-size: 15px !important; }
+  .sh h3 { font-size: 10px !important; }
+  .sb li { font-size: 11px !important; }
+  .el-t { font-size: 11px !important; }
+  .rs-title { font-size: 16px !important; }
+  .rs-label { font-size: 12px; }
+  .rs-desc { font-size: 10px; }
+  .sde-hero-text { font-size: 11px; }
+  .ai-fab { width: 38px; height: 38px; }
+  .contact-chip { display: none; } /* Hide on very small to save space */
+}
+
+/* --- Landscape mobile (short height) --- */
+@media (max-height: 500px) and (max-width: 900px) {
+  #roleScreen { padding: 12px 16px !important; }
+  .rs-logo { height: 18px; margin-bottom: 8px; }
+  .rs-title { font-size: 15px !important; margin-bottom: 2px; }
+  .rs-sub { font-size: 10px !important; margin-bottom: 12px; }
+  .rs-grid { gap: 8px !important; }
+  .rs-card { padding: 10px 12px !important; }
+  .hd { padding: 6px 10px !important; }
+  .oncall-header, .demo-hd, .coldcall-hd, .li-header, .em-header { padding: 8px 12px; }
+}
+
+/* --- Print query addition: hide new mobile-only elements --- */
+@media print {
+  .switch-role-btn { display: none; }
+}
+
+/* --- Mobile tools dropdown (hidden on desktop) --- */
+.mobile-tools-btn {
+  display: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: #f0f2f5;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  position: relative;
+  flex-shrink: 0;
+}
+.mobile-tools-menu {
+  display: none;
+  position: fixed;
+  top: auto;
+  right: 12px;
+  margin-top: 6px;
+  background: #fff;
+  border: 1px solid #e1e2e6;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  padding: 6px;
+  z-index: 9999;
+  min-width: 160px;
+}
+.mobile-tools-menu.show { display: block; }
+.mobile-tools-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: background .1s;
+  border: none;
+  background: none;
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+}
+.mobile-tools-item:hover { background: #f5f5f5; }
+.mobile-tools-item svg { width: 16px; height: 16px; flex-shrink: 0; }
+@media (max-width: 600px) {
+  .mobile-tools-btn { display: flex; order: 3; }
+}
+
+/* Hide LinkedIn/Email tools in mobile menu for SA role */
+body.role-sa .mobile-tools-item[onclick*="openLinkedIn"],
+body.role-sa .mobile-tools-item[onclick*="openEmail"] { display: none; }
 </style>
 </head>
 <body>
@@ -802,6 +1472,8 @@ body.role-sa .tool-icon-btn.linkedin,body.role-sa .tool-icon-btn.email{display:n
 <div class="ee-red-overlay" id="eeRedOvl"></div>
 <div class="ee-fax" id="eeFax"><div class="ee-fax-line"></div></div>
 <canvas class="ee-matrix" id="eeMatrix"></canvas>
+<div class="ee-pipeline-rain" id="eePipelineRain"></div>
+<div class="ee-hacker-overlay" id="eeHackerOvl"></div>
 <div class="ee-ctx" id="eeCtx"><div class="ee-ctx-item" onclick="document.getElementById('eeCtx').classList.remove('show')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0070F2" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Ask Joule</div></div>
 <div class="ai-overlay" id="aiOverlay">
 <div class="ai-modal">
@@ -839,14 +1511,14 @@ body.role-sa .tool-icon-btn.linkedin,body.role-sa .tool-icon-btn.email{display:n
 <svg class="logo" onclick="eeLogo()" viewBox="0 0 412.4 204" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="206.19" y1="206" x2="206.19" y2="2" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 -1 0 206)"><stop offset="0" stop-color="#00B8F1"/><stop offset=".02" stop-color="#01B6F0"/><stop offset=".31" stop-color="#0D90D9"/><stop offset=".58" stop-color="#1775C8"/><stop offset=".82" stop-color="#1C65BF"/><stop offset="1" stop-color="#1E5FBB"/></linearGradient></defs><polyline fill="url(#g)" points="0,204 208.4,204 412.4,0 0,0"/><path fill="#FFF" d="M244.7,38.4h-40.6v96.5l-35.5-96.6h-35.2l-30.3,80.7C100,98.7,79,91.7,62.4,86.4C51.5,82.9,39.8,77.7,40,72c.1-4.7,6.2-9,18.4-8.4c8.2.4,15.4,1.1,29.7,8l14.1-24.5c-13.1-6.6-31.2-10.9-46-10.9h-.1c-17.3,0-31.7,5.6-40.6,14.8c-6.2,6.3-9.7,14.8-9.7,23.7C5.5,87.2,10.1,96,19.7,103c8.1,5.9,18.5,9.8,27.6,12.6c11.3,3.5,20.5,6.5,20.4,13c-.1,2.4-1,4.7-2.7,6.4c-2.8,2.9-7.1,4-13.1,4.1c-11.5.2-20-1.6-33.6-9.6L5.8,154.4c14,8,29.9,12.2,46,12.2h2.1c14.2-.2,25.7-4.3,34.9-11.7c.5-.4,1-.8,1.5-1.3l-4.1,10.9H123l6.2-18.8c7,2.3,14.3,3.5,21.7,3.4c7.2,0,14.3-1.1,21.2-3.2l6,18.6h60.1v-39h13.1c31.7,0,50.5-16.2,50.5-43.2C301.7,52.2,283.5,38.4,244.7,38.4z M150.9,121c-4.4,0-8.8-.7-13-2.3l12.9-40.6h.2l12.6,40.7C159.6,120.3,155.2,121,150.9,121z M247.1,97.7h-8.9V64.9h8.9c11.9,0,21.4,4,21.4,16.1C268.5,93.7,259,97.6,247.1,97.7"/></svg>
 <div><div class="ht" id="mainTitle">Discovery Prep Kits</div><div class="hs" id="subLine">Your Pre-Call Companion</div></div></div>
 <div class="hr">
-<button class="switch-role-btn" id="switchLink" onclick="switchRole()">Switch Role</button><div class="mode-toggle"><button class="mode-btn active" id="mFull" onclick="setMode('full')">Full</button><button class="mode-btn" id="mQuick" onclick="setMode('quick')">Quick</button></div>
+<button class="switch-role-btn" id="switchLink" onclick="switchRole()">Switch Role</button><div class="mode-toggle"><button class="mode-btn" id="mPrep" onclick="setMode('prep')">Prep</button><button class="mode-btn active" id="mQuick" onclick="setMode('quick')">Quick</button><button class="mode-btn" id="mFull" onclick="setMode('full')">Full</button></div>
 <div class="lt"><button class="lb active" id="bEN" onclick="setLang('en')">EN</button><button class="lb" id="bDE" onclick="setLang('de')">DE</button></div>
 <button class="tool-icon-btn" onclick="openCompare()" title="Compare Kits"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 3 3 7 7 11"/><line x1="3" y1="7" x2="21" y2="7"/><polyline points="17 13 21 17 17 21"/><line x1="21" y1="17" x2="3" y2="17"/></svg><span class="tool-tip">Compare Kits</span></button>
 
 <button class="tool-icon-btn live" onclick="liveAction()" id="liveBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span class="tool-tip">On the Call</span></button>
 <button class="tool-icon-btn linkedin" onclick="openLinkedIn()"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span class="tool-tip">LinkedIn Outreach</span></button>
 <button class="tool-icon-btn email" onclick="openEmail()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="tool-tip">Email Outreach</span></button>
-<div class="sw"><input type="text" id="sI" oninput="doS(this.value)" onfocus="doS(this.value)" onblur="setTimeout(clS,200)"><div class="sr" id="sR"></div></div>
+<div class="mobile-tools-btn" id="mobileToolsBtn" onclick="toggleMobileTools(event)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg></div><div class="mobile-tools-menu" id="mobileToolsMenu"><div class="mobile-tools-item" onclick="openCompare();closeMobileTools()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 3 3 7 7 11"/><line x1="3" y1="7" x2="21" y2="7"/><polyline points="17 13 21 17 17 21"/><line x1="21" y1="17" x2="3" y2="17"/></svg><span>Compare</span></div><div class="mobile-tools-item" onclick="openLinkedIn();closeMobileTools()"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></div><div class="mobile-tools-item" onclick="openEmail();closeMobileTools()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0070F2" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>Email</span></div></div><div class="sw"><input type="text" id="sI" oninput="doS(this.value)" onfocus="doS(this.value)" onblur="setTimeout(clS,200)"><div class="sr" id="sR"></div></div>
 </div></div>
 <div class="ln" id="lobN"></div>
 <div class="sn" id="subN"></div>
@@ -911,7 +1583,7 @@ const KITS={"ERP & Cloud": [{"name": "RISE with SAP", "sub": {"en": "Business Tr
 const PLAYS=[{"name": {"sde": {"en": "S/4HANA Deadline Opener", "de": "S/4HANA-Deadline-Tueroeffner"}, "ae": {"en": "S/4HANA Transformation Expander", "de": "S/4HANA-Transformations-Erweiterer"}, "sa": {"en": "S/4HANA Transformation Demo Arc", "de": "S/4HANA-Transformation Demo-Arc"}}, "desc": {"sde": {"en": "Use the 2027 ECC end-of-maintenance deadline to open conversations about full transformation journeys. Bundle 5 solutions into one compelling story.", "de": "Nutze die 2027-ECC-Deadline um Gespraeche ueber Transformationsreisen zu eroeffnen. 5 Loesungen in einer Geschichte buendeln."}, "ae": {"en": "Land RISE as the anchor, then systematically expand into Signavio, LeanIX, WalkMe, and Integration Suite. Each adds 50-150K to the deal.", "de": "RISE als Anker landen, dann systematisch zu Signavio, LeanIX, WalkMe und Integration Suite erweitern. Jedes addiert 50-150K."}, "sa": {"en": "Deliver a connected demo story arc showing how five SAP solutions work together for a seamless ERP transformation journey.", "de": "Eine verbundene Demo-Storyline liefern die zeigt wie fuenf SAP-Loesungen fuer eine nahtlose ERP-Transformation zusammenwirken."}}, "solutions": ["RISE with SAP", "SAP Signavio", "SAP WalkMe", "SAP LeanIX", "SAP Integration Suite"], "pitch": {"sde": {"en": "The 2027 ECC deadline is real and most companies haven't mapped the work. Lead with urgency: 'Have you mapped what needs to happen before mainstream maintenance ends?' Then paint the picture of a complete transformation stack - process mining, architecture planning, migration, integration, and adoption - as one coordinated journey, not five separate purchases.", "de": "Die 2027-ECC-Deadline ist real und die meisten Unternehmen haben die Arbeit nicht durchgeplant. Mit Dringlichkeit einsteigen: 'Haben Sie durchgeplant was vor dem Maintenance-Ende passieren muss?' Dann das Bild einer kompletten Transformations-Reise malen - Process Mining, Architekturplanung, Migration, Integration und Adoption - als eine koordinierte Reise."}, "ae": {"en": "Land RISE as the core ERP migration, then expand systematically: Signavio for process discovery is a quick-win add (shows immediate value in weeks), LeanIX for landscape planning (maps their full estate), Integration Suite for connectivity (required anyway), WalkMe for adoption assurance (reduces go-live risk). Position each as de-risking the transformation, not adding cost.", "de": "RISE als Core-ERP-Migration landen, dann systematisch erweitern: Signavio fuer Prozess-Discovery als Quick-Win-Add, LeanIX fuer Landschaftsplanung, Integration Suite fuer Konnektivitaet, WalkMe fuer Adoption. Jedes als Risikominderung positionieren."}, "sa": {"en": "Demo story arc: Signavio reveals process gaps and inefficiencies > LeanIX maps the landscape complexity and dependencies > RISE shows the clean migration path > Integration Suite connects the hybrid landscape > WalkMe ensures users actually adopt the new system. End with the 'before vs. after' transformation dashboard.", "de": "Demo-Story: Signavio zeigt Prozessluecken > LeanIX zeigt Landschaftskomplexitaet > RISE zeigt den Migrationspfad > Integration Suite verbindet > WalkMe sichert Adoption. Mit Vorher/Nachher-Dashboard abschliessen."}}, "roleAngle": {"sde": {"en": "Lead with the 2027 ECC deadline. Ask: 'Have you mapped what needs to happen before mainstream maintenance ends?' Opens door to the full transformation stack.", "de": "Mit der 2027-ECC-Deadline einsteigen. Fragen: 'Haben Sie schon durchgeplant, was vor dem Maintenance-Ende passieren muss?' Oeffnet die Tuer fuer den gesamten Transformations-Stack."}, "ae": {"en": "Land RISE, then expand: Signavio for process discovery (quick win), LeanIX for landscape planning, WalkMe for adoption. Each adds 50-150K to the deal.", "de": "RISE landen, dann erweitern: Signavio fuer Prozess-Discovery (Quick Win), LeanIX fuer Landschaftsplanung, WalkMe fuer Adoption. Jedes addiert 50-150K zum Deal."}, "sa": {"en": "Demo story arc: Signavio shows process gaps > LeanIX shows landscape complexity > RISE shows the migration path > Integration Suite connects it > WalkMe ensures adoption.", "de": "Demo-Storyline: Signavio zeigt Prozessluecken > LeanIX zeigt Landschaftskomplexitaet > RISE zeigt den Migrationspfad > Integration Suite verbindet > WalkMe sichert Adoption."}}}, {"name": {"sde": {"en": "AI Readiness Conversation Starter", "de": "KI-Readiness-Gespraechseroeffner"}, "ae": {"en": "Data-to-AI Platform Deal", "de": "Daten-zu-KI-Plattform-Deal"}, "sa": {"en": "Data-to-Insight Pipeline Demo", "de": "Daten-zu-Insight-Pipeline-Demo"}}, "desc": {"sde": {"en": "Every company has stalled AI projects. Use the 'data readiness gap' to open doors and position SAP's governed data + AI stack.", "de": "Jedes Unternehmen hat blockierte KI-Projekte. Die 'Daten-Readiness-Luecke' nutzen um Tueren zu oeffnen und SAPs Daten+KI-Stack zu positionieren."}, "ae": {"en": "Build the deal around an AI-ready data foundation with immediate Joule value, then expand to full analytics. 'AI-ready in 90 days' is the executive pitch.", "de": "Deal um ein KI-bereites Datenfundament mit sofortigem Joule-Wert aufbauen, dann zu Analytics erweitern. 'KI-ready in 90 Tagen' ist der Executive-Pitch."}, "sa": {"en": "Demonstrate the complete data-to-insight pipeline showing how SAP preserves semantic integrity from source to AI consumption.", "de": "Die komplette Daten-zu-Insight-Pipeline demonstrieren und zeigen wie SAP semantische Integritaet von Quelle bis KI-Nutzung bewahrt."}}, "solutions": ["SAP Business Data Cloud", "SAP Datasphere", "SAP Business AI / Joule", "SAP Analytics Cloud"], "pitch": {"sde": {"en": "Every company wants AI, but most are stuck because their data isn't ready. Ask: 'Are your AI initiatives waiting on data readiness?' This immediately resonates because it's universally true. Position SAP as the only vendor with both the governed data layer (BDC/Datasphere) AND the embedded AI (Joule) - no third-party plumbing needed.", "de": "Jedes Unternehmen will KI, aber die meisten stecken fest weil Daten nicht bereit sind. Fragen: 'Warten Ihre KI-Initiativen auf Daten-Bereitschaft?' SAP als einziger Anbieter mit Daten-Layer UND eingebetteter KI positionieren."}, "ae": {"en": "Start with Datasphere or BDC as the data foundation (land), then layer Business AI / Joule for immediate automation value. SAC adds self-service analytics on top. Build the executive story around 'AI-ready in 90 days' with concrete use cases for their industry. Total deal: data + AI + analytics in one coherent platform.", "de": "Mit Datasphere oder BDC als Datenfundament starten (landen), dann Business AI / Joule fuer sofortigen Automationswert aufschichten. SAC fuer Self-Service. Executive-Story: 'KI-ready in 90 Tagen' mit konkreten Branchen-Use-Cases."}, "sa": {"en": "Demo the data-to-insight pipeline end-to-end: BDC/Datasphere federates and governs data across sources > Joule surfaces AI insights directly in the user's workflow (no context switching) > SAC provides self-service visualization for business users. The key differentiator: SAP data stays semantically intact through the entire chain.", "de": "Daten-zu-Insight-Pipeline End-to-End demonstrieren: BDC/Datasphere foederiert und governed Daten > Joule liefert KI-Insights direkt im Workflow > SAC bietet Self-Service fuer Fachnutzer. Differenzierung: SAP-Daten bleiben semantisch intakt."}}, "roleAngle": {"sde": {"en": "Ask: 'Are your AI initiatives waiting on data readiness?' Every company has stalled AI projects. This unlocks the conversation about data foundation.", "de": "Fragen: 'Warten Ihre KI-Initiativen auf Daten-Bereitschaft?' Jedes Unternehmen hat blockierte KI-Projekte. Das oeffnet das Gespraech ueber Daten-Fundament."}, "ae": {"en": "Start with Datasphere or BDC as data foundation, then layer Business AI / Joule for immediate value. SAC adds self-service analytics. Build the business case around 'AI-ready in 90 days'.", "de": "Mit Datasphere oder BDC als Daten-Fundament starten, dann Business AI / Joule fuer sofortigen Wert aufschichten. SAC fuer Self-Service-Analytics. Business Case: 'KI-ready in 90 Tagen'."}, "sa": {"en": "Demo the data-to-insight pipeline: BDC/Datasphere federates data > Joule surfaces AI insights in-context > SAC visualizes for business users. Show how SAP data stays semantically intact.", "de": "Daten-zu-Insight-Pipeline demonstrieren: BDC/Datasphere foederiert Daten > Joule liefert KI-Insights im Kontext > SAC visualisiert fuer Fachnutzer. Zeigen wie SAP-Daten semantisch intakt bleiben."}}}, {"name": {"sde": {"en": "Spend Visibility Opener", "de": "Ausgaben-Transparenz-Tueroeffner"}, "ae": {"en": "Total Spend Consolidation Deal", "de": "Gesamtausgaben-Konsolidierungs-Deal"}, "sa": {"en": "Unified Spend Analytics Demo", "de": "Vereinte-Spend-Analytics-Demo"}}, "desc": {"sde": {"en": "Most companies can't answer 'what do we actually spend, with whom, and under what terms?' Open with this universal visibility gap.", "de": "Die meisten Unternehmen koennen nicht beantworten 'was geben wir aus, bei wem, zu welchen Konditionen?' Mit dieser Sichtbarkeitsluecke oeffnen."}, "ae": {"en": "Position the combined savings potential (10-15% of addressable spend) as the executive story. Ariba + Concur + Fieldglass = total spend visibility.", "de": "Kombiniertes Einsparpotenzial (10-15% des adressierbaren Spends) als Executive-Story positionieren. Ariba + Concur + Fieldglass = Gesamtausgaben-Transparenz."}, "sa": {"en": "Show unified analytics across all three spend categories in one dashboard with compliance engines and supplier intelligence at scale.", "de": "Vereinte Analytics ueber alle drei Ausgabenkategorien in einem Dashboard mit Compliance-Engines und Lieferanten-Intelligenz zeigen."}}, "solutions": ["SAP Ariba", "SAP Concur", "SAP Fieldglass"], "pitch": {"sde": {"en": "Lead with the visibility question: 'Do you have full visibility into what your company spends, with whom, and under what terms?' The answer is almost always no. Then paint the picture: goods and services leaking through unmanaged channels (Ariba fixes), travel expenses with no policy enforcement (Concur fixes), contingent workers with no rate benchmarking (Fieldglass fixes). The hook is the universal blind spot.", "de": "Mit der Transparenz-Frage einsteigen: 'Haben Sie volle Transparenz was Sie ausgeben, bei wem, zu welchen Konditionen?' Die Antwort ist fast immer Nein. Dann: Gueter ohne Management (Ariba), Reisen ohne Policy (Concur), Externe ohne Benchmarking (Fieldglass)."}, "ae": {"en": "Position as total spend visibility with hard ROI: Ariba for procurement (typically 5-8% savings), Concur for T&E (15-20% policy compliance improvement), Fieldglass for contingent labor (10-12% rate optimization). Combined savings 10-15% of total addressable spend is the CFO story. Each solution can land independently then expand.", "de": "Als Gesamtausgaben-Transparenz mit hartem ROI positionieren: Ariba fuer Einkauf (5-8% Einsparung), Concur fuer Reisen (15-20% Policy-Verbesserung), Fieldglass fuer Externe (10-12% Raten-Optimierung). Kombiniert 10-15% Einsparung ist die CFO-Story."}, "sa": {"en": "Show the unified spend analytics dashboard: all three categories (procurement, T&E, contingent labor) in one view. Demo the policy compliance engine that catches violations in real-time, and the supplier network intelligence with 5.5M+ suppliers that only SAP can deliver at this scale. Key differentiator: network effects.", "de": "Vereintes Spend-Analytics-Dashboard zeigen: drei Kategorien in einer Sicht. Policy-Compliance-Engine fuer Echtzeit-Violations demonstrieren und Lieferantennetzwerk-Intelligenz mit 5.5M+ Lieferanten die nur SAP in dieser Skalierung bieten kann."}}, "roleAngle": {"sde": {"en": "Lead with: 'Do you have full visibility into what your company spends, with whom, and under what terms?' If the answer is no, this play opens up.", "de": "Einsteigen mit: 'Haben Sie volle Transparenz darueber was Ihr Unternehmen ausgibt, bei wem, und zu welchen Konditionen?' Wenn nein, oeffnet sich dieser Play."}, "ae": {"en": "Position as total spend visibility: Ariba for procurement, Concur for T&E, Fieldglass for contingent labor. Combined savings potential 10-15% of addressable spend is the executive story.", "de": "Als Gesamtausgaben-Transparenz positionieren: Ariba fuer Einkauf, Concur fuer Reisen, Fieldglass fuer externe Arbeitskraefte. Kombiniertes Einsparpotenzial 10-15% ist die Executive-Story."}, "sa": {"en": "Show unified analytics across all three spend categories in one dashboard. Demo the policy compliance engine and the supplier network intelligence that only SAP can deliver at scale.", "de": "Vereinte Analytics ueber alle drei Ausgabenkategorien in einem Dashboard zeigen. Policy-Compliance-Engine und Lieferantennetzwerk-Intelligenz demonstrieren die nur SAP in dieser Skalierung bietet."}}}, {"name": {"sde": {"en": "Connected CX Journey Hook", "de": "Vernetzter-CX-Journey-Hook"}, "ae": {"en": "CX Suite Land-and-Expand", "de": "CX-Suite-Land-and-Expand"}, "sa": {"en": "Connected Customer Profile Demo", "de": "Vernetztes-Kundenprofil-Demo"}}, "desc": {"sde": {"en": "Fragmented CX stacks are everywhere. Use the 'disconnected journey' pain point to open conversations about SAP's unified customer experience suite.", "de": "Fragmentierte CX-Stacks sind ueberall. Den 'unverbundene Journey'-Schmerz nutzen um Gespraeche ueber SAPs einheitliche CX-Suite zu eroeffnen."}, "ae": {"en": "Start with the biggest pain point (usually Commerce or Sales Cloud), then systematically expand across the CX suite. Each module is a deal expansion opportunity.", "de": "Mit dem groessten Schmerzpunkt starten (meist Commerce oder Sales Cloud), dann systematisch ueber die CX-Suite expandieren. Jedes Modul ist eine Deal-Erweiterung."}, "sa": {"en": "Demonstrate the unified customer profile from consent capture through engagement, conversion, relationship management, and retention.", "de": "Das einheitliche Kundenprofil von Consent-Erfassung ueber Engagement, Konversion, Beziehungsmanagement bis Bindung demonstrieren."}}, "solutions": ["SAP Customer Data Cloud (CIAM)", "SAP Emarsys", "SAP Commerce Cloud", "SAP Sales Cloud", "SAP Service Cloud"], "pitch": {"sde": {"en": "Ask: 'How connected is your customer journey from first click to repeat purchase?' Every company has fragmented CX - marketing doesn't talk to sales, sales doesn't talk to service. This bundle positions a fix: one identity layer (CDC), personalized engagement (Emarsys), seamless buying (Commerce), relationship management (Sales), and retention (Service). The hook is the disconnect they already feel.", "de": "Fragen: 'Wie verbunden ist Ihre Customer Journey vom Klick bis zum Wiederkauf?' Jedes Unternehmen hat fragmentierte CX. Dieser Bundle positioniert die Loesung: eine Identity-Schicht (CDC), Engagement (Emarsys), Commerce, Sales, Service. Der Hook ist die Trennung die sie bereits spueren."}, "ae": {"en": "Start with the biggest pain (usually Commerce or Sales Cloud - where budget already exists), then show the expansion path: CDC provides the identity/consent layer (required for privacy compliance anyway), Emarsys personalizes at scale, Service Cloud closes the retention loop. Position each expansion as solving a gap they already know exists. The key: each solution can stand alone but compounds when connected.", "de": "Mit dem groessten Schmerz starten (meist Commerce oder Sales Cloud), dann Expansionspfad zeigen: CDC fuer Identity/Consent, Emarsys fuer Personalisierung, Service Cloud fuer Retention. Jedes Modul als Lueckenfullung positionieren die sie bereits kennen."}, "sa": {"en": "Demo the connected profile end-to-end: CDC captures consent and builds unified identity > Emarsys segments audiences and orchestrates personalized campaigns > Commerce converts with seamless buying experience > Sales Cloud manages the ongoing relationship > Service Cloud retains with proactive support. One customer view across all touchpoints - show the profile enrichment at each stage.", "de": "Vernetztes Profil End-to-End demonstrieren: CDC erfasst Consent und baut einheitliche Identity > Emarsys segmentiert und orchestriert > Commerce konvertiert > Sales Cloud verwaltet > Service Cloud bindet. Eine Kundensicht - Profil-Anreicherung bei jedem Schritt zeigen."}}, "roleAngle": {"sde": {"en": "Ask: 'How connected is your customer journey from first click to repeat purchase?' Fragmented CX stacks are everywhere - this bundles the fix.", "de": "Fragen: 'Wie verbunden ist Ihre Customer Journey vom ersten Klick bis zum Wiederkauf?' Fragmentierte CX-Stacks sind ueberall - dieser Play buendelt die Loesung."}, "ae": {"en": "Start with the biggest pain (usually Commerce or Sales Cloud), then show how CDC provides the identity layer, Emarsys personalizes, and Service Cloud closes the loop. Each is a deal expansion.", "de": "Mit dem groessten Schmerz starten (meist Commerce oder Sales Cloud), dann zeigen wie CDC die Identity-Schicht liefert, Emarsys personalisiert, und Service Cloud den Kreis schliesst."}, "sa": {"en": "Demo the connected profile: CDC captures consent/identity > Emarsys segments and engages > Commerce converts > Sales Cloud manages the relationship > Service Cloud retains. One unified customer view.", "de": "Vernetztes Profil demonstrieren: CDC erfasst Consent/Identity > Emarsys segmentiert und aktiviert > Commerce konvertiert > Sales Cloud verwaltet > Service Cloud bindet. Eine Kundensicht."}}}, {"name": {"sde": {"en": "Mid-Market ERP Modernization Hook", "de": "Mittelstand-ERP-Modernisierungs-Hook"}, "ae": {"en": "GROW Mid-Market Platform Deal", "de": "GROW-Mittelstand-Plattform-Deal"}, "sa": {"en": "GROW Out-of-Box Experience Demo", "de": "GROW-Out-of-the-Box-Demo"}}, "desc": {"sde": {"en": "Target mid-market companies (50M-500M) stuck on legacy ERP. The 'when did you last get a new feature without a project?' question opens every door.", "de": "Mittelstand (50M-500M) auf Legacy-ERP targeten. 'Wann haben Sie zuletzt ein Feature ohne Projekt bekommen?' oeffnet jede Tuer."}, "ae": {"en": "Position GROW + SAC + BTP as the complete mid-market cloud platform with 16-20 week implementation and predictable TCO vs. their current stack.", "de": "GROW + SAC + BTP als komplette Mittelstand-Cloud-Plattform positionieren mit 16-20 Wochen Implementierung und planbarem TCO."}, "sa": {"en": "Demonstrate the out-of-box experience with preconfigured best practices, embedded analytics, and no-code extensibility. Focus on time-to-value.", "de": "Out-of-the-Box-Erfahrung demonstrieren mit vorkonfigurierten Best Practices, eingebetteten Analytics und No-Code-Erweiterbarkeit. Fokus auf Zeit-bis-Wert."}}, "solutions": ["GROW with SAP", "SAP Analytics Cloud", "SAP Integration Suite", "SAP SuccessFactors"], "pitch": {"sde": {"en": "Target companies with 50M-500M revenue running legacy or non-SAP ERP. The killer question: 'When did you last get a new ERP feature without a costly upgrade project?' GROW delivers quarterly innovation automatically. Position it as 'enterprise-grade ERP without enterprise-grade pain' - pre-configured, cloud-native, ready in months not years.", "de": "Unternehmen 50M-500M mit Legacy-/Nicht-SAP-ERP targeten. Killerfrage: 'Wann haben Sie zuletzt ein ERP-Feature ohne teures Upgrade bekommen?' GROW liefert quartalsweise Innovation. 'Enterprise-ERP ohne Enterprise-Schmerz' positionieren."}, "ae": {"en": "Position GROW + SAC + BTP as the mid-market cloud platform. The deal structure: GROW for core ERP (fast implementation 16-20 weeks), SAC for planning and analytics (immediate executive visibility), Integration Suite for connectivity, SuccessFactors for HCM. Compare 3-year TCO against their fragmented current stack - GROW usually wins by 30-40%.", "de": "GROW + SAC + BTP als Mid-Market-Cloud-Plattform positionieren. GROW fuer Core-ERP (16-20 Wochen), SAC fuer Analytics, Integration Suite fuer Konnektivitaet, SuccessFactors fuer HCM. 3-Jahres-TCO-Vergleich - GROW gewinnt meist um 30-40%."}, "sa": {"en": "Demo the out-of-box experience in three acts: (1) preconfigured best practices that work immediately, (2) embedded analytics with SAC giving executives instant insights, (3) no-code extensions on BTP for unique requirements. Emphasize time-to-value: 16-20 weeks vs. 12-18 months for traditional ERP. Show the quarterly innovation cycle.", "de": "Out-of-the-Box-Erfahrung in drei Akten demonstrieren: (1) vorkonfigurierte Best Practices, (2) eingebettete Analytics mit SAC, (3) No-Code-Erweiterungen auf BTP. Zeit-bis-Wert betonen: 16-20 Wochen vs. 12-18 Monate."}}, "roleAngle": {"sde": {"en": "Target companies 50M-500M revenue running legacy/non-SAP ERP. Ask: 'When did you last get a new ERP feature without a costly upgrade project?' GROW delivers quarterly innovation.", "de": "Unternehmen 50M-500M Umsatz mit Legacy-/Nicht-SAP-ERP targeten. Fragen: 'Wann haben Sie zuletzt ein neues ERP-Feature ohne teures Upgrade-Projekt bekommen?' GROW liefert quartalsweise Innovation."}, "ae": {"en": "Position GROW + SAC + BTP as the mid-market cloud platform. Fast implementation (16-20 weeks), predictable cost, instant analytics. Compare TCO against their current stack over 3 years.", "de": "GROW + SAC + BTP als Mid-Market-Cloud-Plattform positionieren. Schnelle Implementierung (16-20 Wochen), planbare Kosten, sofortige Analytics. TCO-Vergleich mit aktuellem Stack ueber 3 Jahre."}, "sa": {"en": "Demo the out-of-box experience: preconfigured best practices, embedded analytics, no-code extensions on BTP. Emphasize time-to-value vs. traditional ERP implementations.", "de": "Out-of-the-Box-Erfahrung demonstrieren: vorkonfigurierte Best Practices, eingebettete Analytics, No-Code-Erweiterungen auf BTP. Zeit-bis-Wert vs. traditionelle ERP-Implementierungen betonen."}}}, {"name": {"sde": {"en": "BW Modernization Urgency Play", "de": "BW-Modernisierungs-Dringlichkeits-Play"}, "ae": {"en": "BW-to-Cloud De-Risk Path", "de": "BW-zu-Cloud-Risikoarmer-Pfad"}, "sa": {"en": "BW Migration Tooling Demo", "de": "BW-Migrations-Tooling-Demo"}}, "desc": {"sde": {"en": "Every BW customer faces the modernization decision. Ask if BW is blocking their S/4 move or consuming innovation budget.", "de": "Jeder BW-Kunde steht vor der Modernisierungs-Entscheidung. Fragen ob BW den S/4-Umstieg blockiert oder Innovations-Budget verbraucht."}, "ae": {"en": "Position BW Bridge as investment protection while Datasphere + SAC deliver the modern layer. No big-bang required - parallel operation de-risks everything.", "de": "BW Bridge als Investitionsschutz positionieren waehrend Datasphere + SAC die moderne Schicht liefern. Kein Big-Bang noetig - Parallelbetrieb reduziert Risiko."}, "sa": {"en": "Show the concrete migration tooling: content conversion from BW to Datasphere, hybrid operation, and unified SAC visualization layer.", "de": "Konkretes Migrations-Tooling zeigen: Content-Konvertierung von BW zu Datasphere, Hybridbetrieb und vereinte SAC-Visualisierungsschicht."}}, "solutions": ["SAP BW Bridge (Move to Cloud)", "SAP Datasphere", "SAP Analytics Cloud", "SAP Business Data Cloud"], "pitch": {"sde": {"en": "Ask: 'Is your BW environment blocking your move to S/4HANA, or consuming budget that should go to innovation?' Every BW customer faces this dilemma. The modernization conversation opens naturally because they know BW can't stay as-is forever. Position the phased approach - no big-bang, no loss of existing content - as the safe path forward.", "de": "Fragen: 'Blockiert BW Ihren S/4-Umstieg oder verbraucht Budget fuer Innovation?' Jeder BW-Kunde kennt das Dilemma. Der phasenweise Ansatz - kein Big-Bang, kein Verlust - als sicherer Pfad positionieren."}, "ae": {"en": "Position as the de-risk path: BW Bridge preserves all existing BW investments and content while Datasphere + SAC deliver the modern analytics layer alongside. No big-bang migration required - run both in parallel, migrate at your own pace. The executive story: protect what works, modernize where it matters, prepare for AI (BDC) - all without disrupting current operations.", "de": "Als risikoarmen Pfad positionieren: BW Bridge sichert alle BW-Investitionen waehrend Datasphere + SAC die moderne Schicht liefern. Parallelbetrieb, eigenes Tempo. Executive-Story: Bestehendes schuetzen, modernisieren wo es zaehlt, KI vorbereiten."}, "sa": {"en": "Show the migration path concretely: (1) BW content migrates via Bridge with the content conversion tool - show the actual tooling, (2) new use cases go to Datasphere natively with modern modeling, (3) SAC provides unified visualization regardless of source. Demo the hybrid operation scenario where old BW and new Datasphere coexist seamlessly.", "de": "Migrationspfad konkret zeigen: (1) BW-Inhalte migrieren via Bridge mit Content-Conversion-Tool, (2) neue Use Cases nativ in Datasphere, (3) SAC vereint die Visualisierung. Hybrid-Betrieb demonstrieren wo BW und Datasphere koexistieren."}}, "roleAngle": {"sde": {"en": "Ask: 'Is your BW environment blocking your move to S/4HANA, or consuming budget that should go to innovation?' Every BW customer faces this decision.", "de": "Fragen: 'Blockiert Ihre BW-Umgebung den Umstieg auf S/4HANA, oder verbraucht Budget das fuer Innovation gedacht ist?' Jeder BW-Kunde steht vor dieser Entscheidung."}, "ae": {"en": "Position as a de-risk path: BW Bridge preserves investments while Datasphere + SAC deliver the modern analytics layer. No big-bang migration required - run both in parallel.", "de": "Als risikoarmen Pfad positionieren: BW Bridge sichert Investitionen waehrend Datasphere + SAC die moderne Analytics-Schicht liefern. Keine Big-Bang-Migration - beides parallel betreiben."}, "sa": {"en": "Show the migration path: BW content migrates via Bridge, new use cases go to Datasphere natively, SAC provides unified visualization. Demo the 'content conversion' tooling.", "de": "Migrationspfad zeigen: BW-Inhalte migrieren via Bridge, neue Use Cases nativ in Datasphere, SAC liefert vereinte Visualisierung. 'Content Conversion'-Tooling demonstrieren."}}}, {"name": {"sde": {"en": "CSRD Compliance Urgency Opener", "de": "CSRD-Compliance-Dringlichkeits-Oeffner"}, "ae": {"en": "Sustainability Compliance-to-Operations Expander", "de": "Nachhaltigkeit-Compliance-zu-Operations-Erweiterer"}, "sa": {"en": "Sustainability Audit Trail Demo", "de": "Nachhaltigkeits-Audit-Trail-Demo"}}, "desc": {"sde": {"en": "CSRD deadlines create genuine urgency. Use regulatory pressure as the strongest door opener for the full sustainability suite.", "de": "CSRD-Deadlines schaffen echte Dringlichkeit. Regulatorischen Druck als staerksten Tueroeffner fuer die gesamte Nachhaltigkeits-Suite nutzen."}, "ae": {"en": "Lead with Green Ledger for CSRD compliance (must-have), then expand into operational sustainability across supply chain, logistics, and workforce.", "de": "Mit Green Ledger fuer CSRD-Compliance fuehren (Must-Have), dann zu operativer Nachhaltigkeit erweitern ueber Supply Chain, Logistik und Workforce."}, "sa": {"en": "Demonstrate the complete audit trail from operational SAP data collection through Green Ledger consolidation to CSRD-compliant reports.", "de": "Den kompletten Audit-Trail von operativer SAP-Datenerfassung ueber Green Ledger-Konsolidierung bis zu CSRD-konformen Reports demonstrieren."}}, "solutions": ["SAP Sustainability (CSRD / Green Ledger)", "SAP Ariba", "SAP Transportation Management", "SAP Analytics Cloud"], "pitch": {"sde": {"en": "Ask: 'How far along is your CSRD readiness? The reporting deadlines are here.' Regulatory urgency is the strongest door opener because it's not optional - it's law. Then connect compliance to the broader sustainability story: you need the data anyway (Green Ledger), why not use it to also optimize supply chain sustainability (Ariba ESG), reduce logistics emissions (TM), and plan decarbonization (SAC)?", "de": "Fragen: 'Wie weit ist Ihre CSRD-Readiness? Die Deadlines sind da.' Regulatorische Dringlichkeit ist der staerkste Tueroeffner weil es Gesetz ist. Dann Compliance mit breiterer Nachhaltigkeits-Story verbinden."}, "ae": {"en": "Lead with Green Ledger for CSRD compliance - this is the must-have that unlocks budget. Then expand to operational sustainability: supply chain carbon tracking via Ariba supplier ESG scoring, logistics emissions measurement via TM, workforce sustainability via SuccessFactors, and decarbonization planning via SAC. The narrative: compliance is the floor, competitive advantage is the ceiling.", "de": "Mit Green Ledger fuer CSRD-Compliance fuehren - das Must-Have das Budget freischaltet. Dann zu operativer Nachhaltigkeit erweitern: Ariba ESG, TM-Emissionen, SF-Workforce, SAC-Planung. Narrative: Compliance ist Minimum, Wettbewerbsvorteil ist Ziel."}, "sa": {"en": "Demo the audit trail end-to-end: (1) automated data collection from operational SAP systems (ERP, procurement, logistics), (2) Green Ledger consolidation with full traceability, (3) CSRD-compliant reporting output that auditors can verify. The key differentiator: existing SAP operational data becomes sustainability evidence without manual collection - show the direct data lineage.", "de": "Audit-Trail End-to-End demonstrieren: (1) automatisierte Datenerfassung aus SAP-Systemen, (2) Green Ledger-Konsolidierung mit Rueckverfolgbarkeit, (3) CSRD-konformes Reporting. Differenzierung: SAP-Daten werden ohne manuellen Aufwand zu Nachhaltigkeits-Evidenz."}}, "roleAngle": {"sde": {"en": "Ask: 'How far along is your CSRD readiness? January 2025/2026 deadlines are approaching fast.' Regulatory urgency is the strongest door opener here.", "de": "Fragen: 'Wie weit ist Ihre CSRD-Readiness? Die Deadlines Januar 2025/2026 kommen schnell.' Regulatorische Dringlichkeit ist hier der staerkste Tueroeffner."}, "ae": {"en": "Lead with Green Ledger for CSRD compliance (must-have), then expand to operational sustainability: supply chain carbon tracking (TM), workforce sustainability (SF), investment planning (SAC).", "de": "Mit Green Ledger fuer CSRD-Compliance fuehren (Must-Have), dann zu operativer Nachhaltigkeit erweitern: Supply-Chain-CO2-Tracking (TM), Workforce-Nachhaltigkeit (SF), Investitionsplanung (SAC)."}, "sa": {"en": "Demo the audit trail: data collection from operational SAP systems > Green Ledger consolidation > CSRD-compliant reporting. Show how existing SAP data becomes sustainability evidence without manual effort.", "de": "Audit-Trail demonstrieren: Datenerfassung aus operativen SAP-Systemen > Green Ledger Konsolidierung > CSRD-konformes Reporting. Zeigen wie bestehende SAP-Daten ohne manuellen Aufwand zu Nachhaltigkeits-Evidenz werden."}}}];
 const LBL={"elevator":{"en":"30-Second Elevator Pitch","de":"30-Sekunden Elevator Pitch"},"qualify":{"en":"Qualifying Signals","de":"Qualifizierungssignale"},"pain":{"en":"Buyer Pain Points","de":"Schmerzpunkte des Kunden"},"questions":{"en":"Discovery Questions","de":"Discovery-Fragen"},"talk":{"en":"Talk Track","de":"Gespraechsleitfaden"},"diff":{"en":"Key Differentiators","de":"Alleinstellungsmerkmale"},"comp":{"en":"Competitive Positioning","de":"Wettbewerbspositionierung"},"dont":{"en":"Do Not Say This","de":"Das nicht sagen"},"indDiff":{"en":"Industry Differentiators","de":"Branchen-Differenzierung"},"industries":{"en":"Strongest Industries","de":"Staerkste Branchen"},"download":{"en":"Download / Print","de":"Herunterladen / Drucken"},"search":{"en":"Search solutions...","de":"Loesungen suchen..."},"obj":{"en":"Objection Handling","de":"Einwandbehandlung"},"persona":{"en":"Buyer Personas","de":"Kaufentscheider-Personas"},"commercial":{"en":"Commercial / Licensing","de":"Kommerziell / Lizenzierung"},"crossSell":{"en":"Cross-Sell Triggers","de":"Cross-Sell-Trigger"},"refs":{"en":"MEE Reference Customers","de":"MEE-Referenzkunden"},"roi":{"en":"ROI / Value Statements","de":"ROI / Wertaussagen"},"meeComp":{"en":"MEE Competitive Landscape","de":"MEE-Wettbewerbslandschaft"}};
 const LOBS=Object.keys(KITS);
-let lang='en',curLob=0,curKit=0,viewMode='full',showPlays=false;
+let lang='en',curLob=0,curKit=0,viewMode='quick',showPlays=false;
 // === ROLE SYSTEM v6 ===
 let currentRole=null;
 
@@ -1199,12 +1871,14 @@ function updateLangUI(){
   e=document.getElementById('demoExitBtn');if(e)e.textContent=de?'Demo beenden':'Exit Demo Mode';
   e=document.getElementById('coldcallExitBtn');if(e)e.textContent=de?'Beenden':'Exit';
   e=document.getElementById('switchLink');if(e)e.textContent=de?'Rolle wechseln':'Switch Role';
+  e=document.getElementById('mPrep');if(e)e.textContent=de?'Prep':'Prep';
   e=document.getElementById('mFull');if(e)e.textContent=de?'Voll':'Full';
   e=document.getElementById('mQuick');if(e)e.textContent=de?'Schnell':'Quick';
   e=document.getElementById('aiFab');if(e)e.title=de?'Kunden-Intel (KI)':'Customer Intel (AI)';
 }
 
-function setMode(m){viewMode=m;document.getElementById('mFull').className='mode-btn'+(m==='full'?' active':'');document.getElementById('mQuick').className='mode-btn'+(m==='quick'?' active':'');render();}
+function setMode(m){if(m==='full'&&currentRole==='sde'){eeToast('Full mode? You\'re not here to learn, you\'re here to dial. But respect.');}
+viewMode=m;document.getElementById('mFull').className='mode-btn'+(m==='full'?' active':'');document.getElementById('mPrep').className='mode-btn'+(m==='prep'?' active':'');document.getElementById('mQuick').className='mode-btn'+(m==='quick'?' active':'');render();}
 
 function initNav(){
 let h='';LOBS.forEach((l,i)=>h+=`<div class="lt2${i===curLob?' active':''}" onclick="selLob(${i})">${l}</div>`);
@@ -1223,7 +1897,11 @@ kits.forEach((k,i)=>h+=`<div class="sc${i===curKit?' active':''}" onclick="selKi
 document.getElementById('subN').innerHTML=h;
 }
 
-function selKit(i){curKit=i;showPlays=false;updSub();render();toggleViews();}
+var _viewedKits=new Set();
+function selKit(i){curKit=i;showPlays=false;updSub();render();toggleViews();
+_viewedKits.add(curLob+'_'+i);
+if(_viewedKits.size===28){eeToast('28 for 28. You\'re either very prepared or very procrastinating.');_viewedKits.clear();}
+}
 
 function nv(d){
 if(showPlays)return;
@@ -1286,7 +1964,8 @@ function render(){
 if(showPlays)return;
 let k=KITS[LOBS[curLob]][curKit],L=lang;
 let role=currentRole||'ae';
-if(role==='sde') renderSDE(k,L);
+if(viewMode==='prep') renderPrep(k,L);
+else if(role==='sde') renderSDE(k,L);
 else if(role==='sa') renderSA(k,L);
 else renderAE(k,L);
 document.getElementById('kV').scrollTop=0;
@@ -1299,6 +1978,140 @@ buildSecNav();
 // Focused on what SDRs need: scripts, triggers, cadence, hooks
 // Does NOT include: deep discovery questions, commercial, cross-sell, ROI
 // ================================================================
+
+// ================================================================
+// PREP MODE: 60-second briefing card (Change 5)
+// ================================================================
+function renderPrep(k,L){
+let role=currentRole||'ae';
+let html=`<div class="kc"><div class="kt"><div><h1>${k.name}</h1><div class="ks">${k.sub[L]}</div></div><div style="display:flex;gap:8px;align-items:center"><button class="col-btn" onclick="setMode('quick')">&#8594; ${L==='en'?'Go Deeper':'Mehr Details'}</button></div></div>`;
+html+=`<div class="prep-card">`;
+
+if(role==='sde'){
+  // SDE PREP: Cold call opener + ICP + Don't Say + Trigger
+  let elevShort=k.elev[L].split('. ').slice(0,2).join('. ')+'.';
+  html+=`<div class="prep-row"><span class="prep-label prep-label-say">${L==='en'?'WHAT THIS IS':'WAS DAS IST'}</span><div class="prep-content">${elevShort}</div></div>`;
+  if(k.icp&&k.icp[L]){
+    html+=`<div class="prep-row"><span class="prep-label" style="color:#0070F2">${L==='en'?'BEST FIT':'ZIELGRUPPE'}</span><div class="prep-content">${k.icp[L]}</div></div>`;
+  }
+  if(k.coldCall&&k.coldCall[L]){
+    html+=`<div class="prep-row"><span class="prep-label prep-label-say">${L==='en'?'OPENER':'EROEFFNUNG'}</span><div class="prep-content">${k.coldCall[L].opener}</div></div>`;
+    html+=`<div class="prep-row"><span class="prep-label" style="color:#7C3AED">${L==='en'?'PERMISSION PIVOT':'PERMISSION-PIVOT'}</span><div class="prep-content">${k.coldCall[L].permission}</div></div>`;
+  }
+  // Don't say
+  let dontItems=L==='en'?'Do not pitch features. Do not say "just 15 minutes." Do not lead with the SAP brand.':'Keine Features pitchen. Nicht "nur 15 Minuten" sagen. Nicht mit SAP-Marke fuehren.';
+  if(k.sdeDont){dontItems+=' '+(L==='en'?k.sdeDont.en[0]:k.sdeDont.de[0]);}
+  html+=`<div class="prep-row"><span class="prep-label prep-label-dont">${L==='en'?'DO NOT SAY':'NICHT SAGEN'}</span><div class="prep-content">${dontItems}</div></div>`;
+  // Trigger events (if available)
+  if(k.triggers&&k.triggers[L]){
+    html+=`<div class="prep-row"><span class="prep-label" style="color:#D97706">${L==='en'?'TRIGGER EVENTS':'TRIGGER-EVENTS'}</span><div class="prep-content">${k.triggers[L].slice(0,3).join(' &bull; ')}</div></div>`;
+  }
+} else if(role==='sa'){
+  // SA PREP: Technical summary + Demo flow + Limitations + Don't Say
+  let elevShort=k.elev[L].split('. ').slice(0,2).join('. ')+'.';
+  html+=`<div class="prep-row"><span class="prep-label prep-label-say">${L==='en'?'TECHNICAL SUMMARY':'TECHNISCHE ZUSAMMENFASSUNG'}</span><div class="prep-content">${elevShort}</div></div>`;
+  // Demo flow (first 2 steps)
+  if(k.demoFlow&&k.demoFlow[L]){
+    let steps=k.demoFlow[L].slice(0,3).map((d,i)=>'<li><strong>'+(i+1)+'.</strong> '+d.step+(d.say?' &mdash; <em>"'+d.say+'"</em>':'')+'</li>').join('');
+    html+=`<div class="prep-row"><span class="prep-label" style="color:#7C3AED">${L==='en'?'DEMO FLOW (START)':'DEMO-ABLAUF (START)'}</span><div class="prep-content"><ul style="margin:0;padding-left:16px">${steps}</ul></div></div>`;
+  }
+  // Limitations warning
+  if(k.limitations&&k.limitations[L]){
+    html+=`<div class="prep-row"><span class="prep-label" style="color:#D97706">${L==='en'?'KNOWN LIMITATIONS':'BEKANNTE EINSCHRAENKUNGEN'}</span><div class="prep-content">${k.limitations[L].slice(0,2).join('. ')}.</div></div>`;
+  }
+  // Don't say
+  let dontItems=L==='en'?'Do not promise roadmap features as committed. Do not skip customer context to jump into demo.':'Keine Roadmap-Features als zugesagt versprechen. Nicht ohne Kundenkontext direkt in die Demo springen.';
+  if(k.saDont){dontItems+=' '+(L==='en'?k.saDont.en[0]:k.saDont.de[0]);}
+  html+=`<div class="prep-row"><span class="prep-label prep-label-dont">${L==='en'?'DO NOT SAY':'NICHT SAGEN'}</span><div class="prep-content">${dontItems}</div></div>`;
+  // Stakeholder
+  if(k.stakeholderMap&&k.stakeholderMap[L]&&k.stakeholderMap[L].length>0){
+    let st=k.stakeholderMap[L][0];
+    html+=`<div class="prep-row"><span class="prep-label prep-label-stake">${L==='en'?'KEY STAKEHOLDER':'STAKEHOLDER'}</span><div class="prep-content"><strong>${st.role}:</strong> ${L==='en'?'Cares about':'Wichtig:'} ${st.cares}${st.engage?'. <em>'+(L==='en'?'Engage via':'Ansprechen ueber')+':</em> '+st.engage:''}</div></div>`;
+  }
+} else {
+  // AE PREP: Positioning + Don't Say + Questions + Stakeholder
+  html+=`<div class="prep-row"><span class="prep-label prep-label-say">${L==='en'?'POSITIONING':'POSITIONIERUNG'}</span><div class="prep-content">${k.elev[L]}</div></div>`;
+  // Don't say
+  let dontItems=L==='en'?'Do not discuss pricing before value. Do not bypass your champion. Do not commit timelines without SA validation.':'Keine Preise vor Wertdarstellung. Champion nicht umgehen. Keine Timelines ohne SA-Validierung.';
+  if(k.aeDont){dontItems+=' '+(L==='en'?k.aeDont.en[0]:k.aeDont.de[0]);}
+  html+=`<div class="prep-row"><span class="prep-label prep-label-dont">${L==='en'?'DO NOT SAY':'NICHT SAGEN'}</span><div class="prep-content">${dontItems}</div></div>`;
+  // Top 3 questions
+  let qs=k.questions[L].slice(0,3).map(x=>'<li><strong>['+x.t+']</strong> '+x.q+'</li>').join('');
+  html+=`<div class="prep-row"><span class="prep-label prep-label-ask">${L==='en'?'ASK':'FRAGEN'}</span><div class="prep-content"><ul style="margin:0;padding-left:16px">${qs}</ul></div></div>`;
+  // Stakeholder (first one)
+  if(k.stakeholderMap&&k.stakeholderMap[L]&&k.stakeholderMap[L].length>0){
+    let st=k.stakeholderMap[L][0];
+    html+=`<div class="prep-row"><span class="prep-label prep-label-stake">${L==='en'?'KEY STAKEHOLDER':'STAKEHOLDER'}</span><div class="prep-content"><strong>${st.role}:</strong> ${L==='en'?'Cares about':'Wichtig:'} ${st.cares}${st.engage?'. <em>'+(L==='en'?'Engage via':'Ansprechen ueber')+':</em> '+st.engage:''}</div></div>`;
+  }
+  // Deal timeline
+  if(k.dealTimeline&&k.dealTimeline[L]){
+    html+=`<div class="prep-row"><span class="prep-label" style="color:#16A34A">${L==='en'?'DEAL CYCLE':'DEAL-ZYKLUS'}</span><div class="prep-content">${k.dealTimeline[L]}</div></div>`;
+  }
+}
+
+// Actions
+html+=`<div class="prep-actions"><button class="prep-copy" onclick="copyPrep()">${L==='en'?'Copy Briefing':'Briefing kopieren'}</button><button class="prep-deeper" onclick="setMode('quick')">${L==='en'?'Go Deeper':'Mehr Details'}</button></div>`;
+html+=`</div>`;
+html+=`<div class="kf">${L==='en'?'Discovery Prep Kit':'Discovery Prep Kit'} &mdash; SAP Data, Assets &amp; Campaigns @ MEE &mdash; ${L==='en'?'Last updated: May, 2026':'Letzte Aktualisierung: Mai 2026'}</div></div>`;
+document.getElementById('kV').innerHTML=html;
+}
+
+// Copy prep briefing to clipboard
+function copyPrep(){
+let role=currentRole||'ae';
+let k=KITS[LOBS[curLob]][curKit],L=lang;
+let txt='';
+if(role==='sde'){
+  txt+=(L==='en'?'WHAT THIS IS: ':'WAS DAS IST: ')+k.elev[L].split('. ').slice(0,2).join('. ')+'.\n';
+  if(k.icp&&k.icp[L])txt+=(L==='en'?'BEST FIT: ':'ZIELGRUPPE: ')+k.icp[L]+'\n';
+  if(k.coldCall&&k.coldCall[L])txt+=(L==='en'?'OPENER: ':'EROEFFNUNG: ')+k.coldCall[L].opener+'\n';
+  txt+=(L==='en'?'DO NOT SAY: Do not pitch features. Do not say "just 15 minutes." Do not lead with the SAP brand.':'NICHT SAGEN: Keine Features pitchen. Nicht "nur 15 Minuten" sagen. Nicht mit SAP-Marke fuehren.')+'\n';
+  if(k.triggers&&k.triggers[L])txt+=(L==='en'?'TRIGGERS: ':'TRIGGER: ')+k.triggers[L].slice(0,3).join(', ')+'\n';
+} else if(role==='sa'){
+  txt+=(L==='en'?'TECHNICAL SUMMARY: ':'TECHNISCHE ZUSAMMENFASSUNG: ')+k.elev[L].split('. ').slice(0,2).join('. ')+'.\n';
+  if(k.demoFlow&&k.demoFlow[L])txt+=(L==='en'?'DEMO START: ':'DEMO-START: ')+k.demoFlow[L].slice(0,2).map((d,i)=>(i+1)+'. '+d.step).join(' | ')+'\n';
+  if(k.limitations&&k.limitations[L])txt+=(L==='en'?'LIMITATIONS: ':'EINSCHRAENKUNGEN: ')+k.limitations[L].slice(0,2).join('. ')+'.\n';
+  txt+=(L==='en'?'DO NOT SAY: Do not promise roadmap features as committed. Do not skip customer context.':'NICHT SAGEN: Keine Roadmap-Features als zugesagt versprechen. Nicht ohne Kundenkontext in die Demo.')+'\n';
+} else {
+  txt+=(L==='en'?'POSITIONING: ':'POSITIONIERUNG: ')+k.elev[L]+'\n';
+  txt+=(L==='en'?'DO NOT SAY: Do not discuss pricing before value. Do not bypass your champion.':'NICHT SAGEN: Keine Preise vor Wertdarstellung. Champion nicht umgehen.')+'\n';
+  txt+=(L==='en'?'ASK:\n':'FRAGEN:\n');
+  k.questions[L].slice(0,3).forEach(x=>txt+='  ['+x.t+'] '+x.q+'\n');
+  if(k.stakeholderMap&&k.stakeholderMap[L]&&k.stakeholderMap[L].length>0){
+    let st=k.stakeholderMap[L][0];
+    txt+=(L==='en'?'KEY STAKEHOLDER: ':'STAKEHOLDER: ')+st.role+' - '+st.cares+(st.engage?' (Engage: '+st.engage+')':'')+'\n';
+  }
+}
+navigator.clipboard.writeText(txt).then(function(){eeToast(L==='en'?'Briefing copied!':'Briefing kopiert!');});
+}
+
+
+// Change 9: Stakeholder filter chip function
+var _stakeClicked={};
+function filterStake(idx,secId){
+let container=document.getElementById('sb-'+secId);
+if(!container)return;
+let chips=container.querySelectorAll('.stake-chip');
+let items=container.querySelectorAll('.stake-item');
+let clickedChip=chips[idx];
+let isActive=clickedChip.classList.contains('active');
+// Toggle: if already active, show all; else filter
+chips.forEach(c=>c.classList.remove('active'));
+items.forEach(it=>it.classList.remove('dimmed'));
+if(!isActive){
+  clickedChip.classList.add('active');
+  items.forEach((it,i)=>{if(i!==idx)it.classList.add('dimmed');});
+}
+// Easter egg: track unique chips clicked per kit
+var kitKey=curLob+'_'+curKit+'_'+secId;
+if(!_stakeClicked[kitKey])_stakeClicked[kitKey]=new Set();
+_stakeClicked[kitKey].add(idx);
+if(_stakeClicked[kitKey].size===chips.length&&chips.length>=3){
+  eeToast('Every stakeholder, every angle. MEDDPICC would be proud.');
+  _stakeClicked[kitKey]=new Set();
+}
+}
+
 function renderSDE(k,L){
 let isQuick=viewMode==='quick';
 let html=`<div class="kc"><div class="kt"><div><h1>${k.name}</h1><div class="ks">${k.sub[L]}</div></div><div style="display:flex;gap:8px;align-items:center"><button class="col-btn" onclick="togAll()">&#8597; ${L==='en'?'Collapse / Expand':'Auf- / Zuklappen'}</button><button class="bd" onclick="eePrint()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z"/></svg>${LBL.download[L]}</button></div></div>`;
@@ -1317,23 +2130,28 @@ if(k.coldCall&&k.coldCall[L]){
 html+=`<div class="kg">`;
 
 if(isQuick){
-// === SDE QUICK MODE: Call in 5 minutes ===
+// === SDE QUICK MODE: Reordered for time pressure (Changes 4,8,10) ===
+// 1. Do Not Say — PROMOTED, right after cold call script (Change 8)
+html+=`<div class="sec sec-dontsay sec-priority" data-sec="sdeDontQ"><div class="sh"><div class="ic">&#9888;</div><h3>${L==='en'?'Do Not Say':'Nicht sagen'}</h3></div><div class="sb" id="sb-sdeDontQ"><ul>`+(L==='en'?'<li><strong>Do not pitch features.</strong> You are opening a door, not giving a demo. Lead with their problem.</li><li><strong>Do not say "just 15 minutes."</strong> Say "quick question" or "30 seconds" instead.</li><li><strong>Do not mention pricing or licensing.</strong> "Let me connect you with the right person to scope that."</li><li><strong>Do not lead with the SAP brand.</strong> Lead with their pain. "SAP" first = procurement reflex.</li><li><strong>Do not read your script verbatim.</strong> Sound human. Match their energy.</li>':'<li><strong>Keine Features pitchen.</strong> Du oeffnest eine Tuer. Mit ihrem Problem fuehren.</li><li><strong>Nicht "nur 15 Minuten" sagen.</strong> "Kurze Frage" oder "30 Sekunden".</li><li><strong>Keine Preise oder Lizenzen erwaehnen.</strong> "Lassen Sie mich den richtigen Ansprechpartner verbinden."</li><li><strong>Nicht mit SAP-Marke fuehren.</strong> "SAP" im ersten Satz = Einkaufsreflex.</li><li><strong>Nicht wortwoertlich ablesen.</strong> Menschlich klingen. Ton anpassen.</li>')+`</ul>`;
+if(k.sdeDont){let items=L==='en'?k.sdeDont.en:k.sdeDont.de;html+='<div style="margin-top:8px;padding-top:8px;border-top:1px dashed #FCA5A5"><strong style="font-size:10px;color:#DC2626;text-transform:uppercase;letter-spacing:.5px">'+(L==='en'?'Kit-Specific':'Kit-spezifisch')+'</strong><ul style="margin:4px 0 0 14px;padding:0;font-size:13px">';items.forEach(d=>{html+='<li style="margin-bottom:4px">'+d+'</li>';});html+='</ul></div>';}
+html+=`</div></div>`;
+// 2. Trigger Events (priority — tells you WHY they might care right now)
 if(k.triggers&&k.triggers[L]){
-  html+=`<div class="sec" data-sec="triggers"><div class="sh" onclick="togSec('triggers')"><div class="ic">&#9889;</div><h3>${L==='en'?'Trigger Events':'Trigger-Events'}</h3><button class="cp-btn" onclick="event.stopPropagation();copySection('triggers')">${lang==='de'?'Kopieren':'Copy'}</button><div class="sh-tog${collapsed.triggers?' collapsed':''}" id="tog-triggers">&#9660;</div></div><div class="sb${collapsed.triggers?' hidden':''}" id="sb-triggers"><div class="sde-badges">${k.triggers[L].map(t=>`<span class="sde-badge">${t}</span>`).join('')}</div></div></div>`;
+  html+=`<div class="sec sec-priority" data-sec="triggers"><div class="sh" onclick="togSec('triggers')"><div class="ic">&#9889;</div><h3>${L==='en'?'Trigger Events':'Trigger-Events'}</h3><button class="cp-btn" onclick="event.stopPropagation();copySection('triggers')">${lang==='de'?'Kopieren':'Copy'}</button><div class="sh-tog${collapsed.triggers?' collapsed':''}" id="tog-triggers">&#9660;</div></div><div class="sb${collapsed.triggers?' hidden':''}" id="sb-triggers"><div class="sde-badges">${k.triggers[L].map(t=>`<span class="sde-badge">${t}</span>`).join('')}</div></div></div>`;
 }
+// 3. Brush-off Handling (priority — immediate survival)
+html+=sec('sobj sec-priority',L==='en'?'Brush-off Handling':'Abwimmel-Reaktionen','&#128683;',L==='en'?'<li><strong>"Send me an email":</strong> "Happy to \u2014 quick question first: [pivot to pain]. If relevant, I will send something specific."</li><li><strong>"Call next quarter":</strong> "Absolutely. What would need to be true then? ...I will reach out [date] with [specific item]."</li><li><strong>"Not interested":</strong> "Fair enough. Quick curiosity: are you currently [pain/trigger]? If not, I will not bother you again."</li><li><strong>"We have a solution":</strong> "How long on [competitor]? Most in [industry] are re-evaluating because [trigger]. On your radar?"</li><li><strong>"I am busy":</strong> "20 seconds: [value prop]. Relevant? Thursday AM or Friday PM?"</li>':'<li><strong>"Schicken Sie eine E-Mail":</strong> "Gerne \u2014 kurze Frage vorweg: [Pivot zu Schmerz]. Falls relevant, schicke ich etwas Konkretes."</li><li><strong>"Naechstes Quartal anrufen":</strong> "Absolut. Was muesste dann wahr sein? ...Ich melde mich am [Datum] mit [konkretem Punkt]."</li><li><strong>"Kein Interesse":</strong> "Kurze Frage: haben Sie aktuell [Schmerz/Trigger]? Falls nicht, stoere ich nicht wieder."</li><li><strong>"Haben schon eine Loesung":</strong> "Wie lange auf [Wettbewerber]? Die meisten bewerten neu wegen [Trigger]. Thema?"</li><li><strong>"Bin beschaeftigt":</strong> "20 Sekunden: [Wertversprechen]. Relevant? Donnerstag oder Freitag?"</li>','brushoff');
+// 4. Cadence (secondary)
 if(k.cadence&&k.cadence[L]){
-  html+=`<div class="sec" data-sec="cadence"><div class="sh" onclick="togSec('cadence')"><div class="ic">&#9200;</div><h3>${L==='en'?'Outreach Cadence':'Outreach-Kadenz'}</h3><button class="cp-btn" onclick="event.stopPropagation();copySection('cadence')">${lang==='de'?'Kopieren':'Copy'}</button><div class="sh-tog${collapsed.cadence?' collapsed':''}" id="tog-cadence">&#9660;</div></div><div class="sb${collapsed.cadence?' hidden':''}" id="sb-cadence"><div class="sde-cadence">${k.cadence[L].map(s=>`<div class="sde-step"><div class="sde-dot"></div><span class="sde-day">${L==='en'?'Day':'Tag'} ${s.day}</span><span class="sde-ch">${s.channel}</span><span class="sde-action">${s.action}</span></div>`).join('')}</div></div></div>`;
+  html+=`<div class="sec sec-secondary" data-sec="cadence"><div class="sh" onclick="togSec('cadence')"><div class="ic">&#9200;</div><h3>${L==='en'?'Outreach Cadence':'Outreach-Kadenz'}</h3><button class="cp-btn" onclick="event.stopPropagation();copySection('cadence')">${lang==='de'?'Kopieren':'Copy'}</button><div class="sh-tog${collapsed.cadence?' collapsed':''}" id="tog-cadence">&#9660;</div></div><div class="sb${collapsed.cadence?' hidden':''}" id="sb-cadence"><div class="sde-cadence">${k.cadence[L].map(s=>`<div class="sde-step"><div class="sde-dot"></div><span class="sde-day">${L==='en'?'Day':'Tag'} ${s.day}</span><span class="sde-ch">${s.channel}</span><span class="sde-action">${s.action}</span></div>`).join('')}</div></div></div>`;
 }
+// 5. Cold Outreach Objections (secondary)
 if(k.coldObj&&k.coldObj[L]){
-  html+=sec('sobj',L==='en'?'Cold Outreach Objections':'Kaltakquise-Einwaende','&#9888;',k.coldObj[L].map(x=>`<li><strong>${x.o}:</strong> ${x.r}</li>`).join(''),'coldObj');
+  html+=sec('sobj sec-secondary',L==='en'?'Cold Outreach Objections':'Kaltakquise-Einwaende','&#9888;',k.coldObj[L].map(x=>`<li><strong>${x.o}:</strong> ${x.r}</li>`).join(''),'coldObj');
 }
-// SDE Quick: Brush-off Handling
-html+=sec('sobj',L==='en'?'Brush-off Handling':'Abwimmel-Reaktionen','&#128683;',L==='en'?'<li><strong>"Send me an email":</strong> Not a next step — keep them talking. "Happy to — quick question first: [pivot to pain]. If relevant, I will send something specific."</li><li><strong>"Call next quarter":</strong> "Absolutely. What would need to be true then for this to matter? ...I will reach out [date] with [specific item]."</li><li><strong>"Not interested":</strong> "Fair enough. Quick curiosity: are you currently [pain/trigger]? If not, I will not bother you again."</li><li><strong>"We have a solution":</strong> "Makes sense. How long on [competitor]? Most in [industry] are re-evaluating because [trigger]. On your radar?"</li><li><strong>"I am busy":</strong> "20 seconds: [value prop]. Relevant? Thursday AM or Friday PM?"</li>':'<li><strong>"Schicken Sie eine E-Mail":</strong> Kein naechster Schritt — im Gespraech bleiben. "Gerne — kurze Frage vorweg: [Pivot zu Schmerz]. Falls relevant, schicke ich etwas Konkretes."</li><li><strong>"Naechstes Quartal anrufen":</strong> "Absolut. Was muesste dann wahr sein? ...Ich melde mich am [Datum] mit [konkretem Punkt]."</li><li><strong>"Kein Interesse":</strong> "Voellig fair. Kurze Frage: haben Sie aktuell [Schmerz/Trigger]? Falls nicht, stoere ich nicht wieder."</li><li><strong>"Haben schon eine Loesung":</strong> "Wie lange auf [Wettbewerber]? Die meisten in [Branche] bewerten neu wegen [Trigger]. Thema bei Ihnen?"</li><li><strong>"Bin beschaeftigt":</strong> "20 Sekunden: [Wertversprechen]. Relevant? Donnerstag oder Freitag?"</li>','brushoff');
-html+=sec('sv',LBL.qualify[L],'Q',k.qual[L].map(x=>`<li>${x}</li>`).join(''),'qual');
-if(k.persona)html+=sec('sper',LBL.persona[L],'&#9787;',k.persona[L].map(x=>`<li><strong>${x.role} ${x.priority==='high'?'&#9733;':''}</strong> ${x.msg}</li>`).join(''),'persona');
-// SDE-specific Do Not Say
-html+=sec('sx',L==='en'?'Do Not Say (Cold Outreach)':'Nicht sagen (Kaltakquise)','X',L==='en'?'<li><strong>Do not pitch features.</strong> You are opening a door, not giving a product demo. Lead with their problem, not your solution.</li><li><strong>Do not say "just 15 minutes."</strong> It signals you will waste their time. Say "quick question" or "30 seconds" instead.</li><li><strong>Do not mention pricing or licensing.</strong> If asked, say: "Let me connect you with the right person to scope that properly."</li><li><strong>Do not lead with the SAP brand.</strong> Lead with their pain. "SAP" in the first sentence triggers procurement reflexes.</li><li><strong>Do not read your script verbatim.</strong> Sound human. Adjust your tone to match their energy. Monotone = hang up.</li>':'<li><strong>Keine Features pitchen.</strong> Du oeffnest eine Tuer, machst keine Produktdemo. Mit ihrem Problem fuehren, nicht unserer Loesung.</li><li><strong>Nicht "nur 15 Minuten" sagen.</strong> Signalisiert Zeitverschwendung. Sage "kurze Frage" oder "30 Sekunden".</li><li><strong>Keine Preise oder Lizenzen erwaehnen.</strong> Bei Nachfrage: "Lassen Sie mich den richtigen Ansprechpartner dafuer verbinden."</li><li><strong>Nicht mit der SAP-Marke fuehren.</strong> Mit ihrem Schmerz fuehren. "SAP" im ersten Satz triggert Einkaufsreflexe.</li><li><strong>Nicht das Skript wortwoertlich ablesen.</strong> Menschlich klingen. Ton anpassen. Monoton = Aufgelegt.</li>','sdeDont');
-if(k.sdeDont){let items=L==='en'?k.sdeDont.en:k.sdeDont.de;html+='<div style="margin:-8px 0 12px 0;padding:10px 14px;background:#FFF5F5;border-radius:0 0 8px 8px;border-top:1px dashed #FCA5A5"><strong style="font-size:10px;color:#DC2626;text-transform:uppercase;letter-spacing:.5px">'+(L==='en'?'Kit-Specific Mistakes':'Kit-spezifische Fehler')+'</strong><ul style="margin:6px 0 0 14px;padding:0;font-size:13px">';items.forEach(d=>html+='<li style="margin-bottom:4px">'+d+'</li>');html+='</ul></div>';}
+// 6. Qualify + Persona (secondary)
+html+=sec('sv sec-secondary',LBL.qualify[L],'Q',k.qual[L].map(x=>`<li>${x}</li>`).join(''),'qual');
+if(k.persona)html+=sec('sper sec-secondary',LBL.persona[L],'&#9787;',k.persona[L].map(x=>`<li><strong>${x.role} ${x.priority==='high'?'&#9733;':''}</strong> ${x.msg}</li>`).join(''),'persona');
 } else {
 // === SDE FULL MODE: Learning + Execution ===
 if(k.triggers&&k.triggers[L]){
@@ -1428,23 +2246,38 @@ if(k.dealTimeline&&k.dealTimeline[L]){
 html+=`<div class="kg">`;
 
 if(isQuick){
-// AE Quick: Discovery essentials for pre-call prep
-if(k.persona)html+=sec('sper',LBL.persona[L],'&#9787;',k.persona[L].map(x=>`<li><strong>${x.role} ${x.priority==='high'?'&#9733;':''}</strong> ${x.msg}</li>`).join(''),'persona');
-html+=sec('sp',LBL.pain[L],'!',k.pain[L].map(x=>`<li>${x}</li>`).join(''),'pain');
-html+=sec('sq',LBL.questions[L],'?',k.questions[L].slice(0,5).map(x=>`<li><strong>[${x.t}]</strong> ${x.q}</li>`).join(''),'questions');
-html+=sec('sd',LBL.diff[L],'+',k.diff[L].map(x=>`<li>${x}</li>`).join(''),'diff');
-if(k.obj)html+=sec('sobj',LBL.obj[L],'&#9888;',k.obj[L].map(x=>`<li><strong>${x.o}:</strong> ${x.r}</li>`).join(''),'obj');
-if(k.roi)html+=sec('sroi',LBL.roi[L],'&#8593;',k.roi[L].map(x=>`<li>${x}</li>`).join(''),'roi');
-// AE-specific Do Not Say (Quick)
-html+=sec('sx',L==='en'?'Do Not Say (Deal Execution)':'Nicht sagen (Deal)','X',L==='en'?'<li><strong>Do not discuss pricing before establishing value.</strong> If they ask early, say: "Let me first make sure this is even the right fit — then we can talk specifics."</li><li><strong>Do not bypass your champion to reach the EB directly.</strong> You will lose trust and the deal. Always go through and empower your champion.</li><li><strong>Do not commit timelines without SA validation.</strong> Promising "go-live in 3 months" without technical sign-off creates delivery risk.</li><li><strong>Do not position as rip-and-replace.</strong> Frame as transformation/evolution. "Replace" triggers fear and resistance from operations teams.</li><li><strong>Do not present without a question plan.</strong> A meeting where you only talk is a meeting where you learn nothing.</li>':'<li><strong>Keine Preise vor Wertdarstellung diskutieren.</strong> Bei fruehen Fragen: "Lassen Sie mich erst sicherstellen dass es passt — dann koennen wir konkret werden."</li><li><strong>Den Champion nicht umgehen um direkt zum EB zu gehen.</strong> Vertrauen geht verloren. Immer durch den Champion arbeiten.</li><li><strong>Keine Timelines ohne SA-Validierung zusagen.</strong> "Go-Live in 3 Monaten" ohne technisches OK schafft Delivery-Risiko.</li><li><strong>Nicht als Rip-and-Replace positionieren.</strong> Als Transformation/Evolution rahmen. "Ersetzen" triggert Angst bei Operations-Teams.</li><li><strong>Nicht ohne Fragenplan praesentieren.</strong> Ein Meeting in dem nur Sie reden ist eines in dem Sie nichts lernen.</li>','aeDont');
-if(k.aeDont){let items=L==='en'?k.aeDont.en:k.aeDont.de;html+='<div style="margin:-8px 0 12px 0;padding:10px 14px;background:#FFF5F5;border-radius:0 0 8px 8px;border-top:1px dashed #FCA5A5"><strong style="font-size:10px;color:#DC2626;text-transform:uppercase;letter-spacing:.5px">'+(L==='en'?'Kit-Specific Mistakes':'Kit-spezifische Fehler')+'</strong><ul style="margin:6px 0 0 14px;padding:0;font-size:13px">';items.forEach(d=>html+='<li style="margin-bottom:4px">'+d+'</li>');html+='</ul></div>';}
+// AE Quick: Reordered for pre-call urgency (Change 3)
+// 1. Do Not Say — FIRST, promoted (Change 8)
+html+=`<div class="sec sec-dontsay sec-priority" data-sec="aeDontQ"><div class="sh"><div class="ic">&#9888;</div><h3>${L==='en'?'Do Not Say':'Nicht sagen'}</h3></div><div class="sb" id="sb-aeDontQ"><ul>`+(L==='en'?'<li><strong>Do not discuss pricing before establishing value.</strong> "Let me first make sure this is the right fit."</li><li><strong>Do not bypass your champion to reach the EB.</strong> Always go through and empower your champion.</li><li><strong>Do not commit timelines without SA validation.</strong> Creates delivery risk.</li><li><strong>Do not position as rip-and-replace.</strong> Frame as transformation/evolution.</li><li><strong>Do not present without a question plan.</strong> A meeting where you only talk is one where you learn nothing.</li>':'<li><strong>Keine Preise vor Wertdarstellung.</strong> "Lassen Sie mich erst sicherstellen dass es passt."</li><li><strong>Den Champion nicht umgehen.</strong> Immer durch den Champion arbeiten.</li><li><strong>Keine Timelines ohne SA-Validierung.</strong> Schafft Delivery-Risiko.</li><li><strong>Nicht als Rip-and-Replace positionieren.</strong> Als Transformation rahmen.</li><li><strong>Nicht ohne Fragenplan praesentieren.</strong> Sie lernen sonst nichts.</li>')+`</ul>`;
+if(k.aeDont){let items=L==='en'?k.aeDont.en:k.aeDont.de;html+='<div style="margin-top:8px;padding-top:8px;border-top:1px dashed #FCA5A5"><strong style="font-size:10px;color:#DC2626;text-transform:uppercase;letter-spacing:.5px">'+(L==='en'?'Kit-Specific':'Kit-spezifisch')+'</strong><ul style="margin:4px 0 0 14px;padding:0;font-size:13px">';items.forEach(d=>html+='<li style="margin-bottom:4px">'+d+'</li>');html+='</ul></div>';}
+html+=`</div></div>`;
+// 2. Stakeholder Map with filter chips (Change 9)
+if(k.stakeholderMap&&k.stakeholderMap[L]){
+  let stakeId='stakeQ';
+  let stData=k.stakeholderMap[L];
+  let chips=stData.map((x,i)=>`<span class="stake-chip" onclick="filterStake(${i},'${stakeId}')">${x.role}</span>`).join('');
+  let rows=stData.map((x,i)=>`<li class="stake-item" data-stake-idx="${i}"><strong>${x.role}:</strong> ${x.cares}${x.engage?' <em>'+(L==='en'?'Engage':'Ansprechen')+':</em> '+x.engage:''}</li>`).join('');
+  html+=`<div class="sec sper sec-priority" data-sec="${stakeId}"><div class="sh" onclick="togSec('${stakeId}')"><div class="ic">&#9878;</div><h3>${L==='en'?'Stakeholder Map':'Stakeholder-Map'}</h3><button class="cp-btn" onclick="event.stopPropagation();copySection('${stakeId}')">${lang==='de'?'Kopieren':'Copy'}</button><div class="sh-tog${collapsed[stakeId]?' collapsed':''}" id="tog-${stakeId}">&#9660;</div></div><div class="sb${collapsed[stakeId]?' hidden':''}" id="sb-${stakeId}"><div class="stake-filters">${chips}</div><ul>${rows}</ul></div></div>`;
+}
+// 3. Discovery Questions (top 5) — priority
+html+=`<div class="sec sq sec-priority" data-sec="questions"><div class="sh" onclick="togSec('questions')"><div class="ic">?</div><h3>${LBL.questions[L]}</h3><button class="cp-btn" onclick="event.stopPropagation();copySection('questions')">${lang==='de'?'Kopieren':'Copy'}</button><div class="sh-tog${collapsed.questions?' collapsed':''}" id="tog-questions">&#9660;</div></div><div class="sb${collapsed.questions?' hidden':''}" id="sb-questions"><ul>${k.questions[L].slice(0,5).map(x=>'<li><strong>['+x.t+']</strong> '+x.q+'</li>').join('')}</ul></div></div>`;
+// 4. Opportunity Fit Check
+html+=sec('sv sec-priority',L==='en'?'Opportunity Fit Check':'Opportunity-Passung','Q',k.qual[L].map(x=>`<li>${x}</li>`).join(''),'qual');
+// 5. Secondary: Pain, Diff, Persona
+html+=sec('sp sec-secondary',LBL.pain[L],'!',k.pain[L].map(x=>`<li>${x}</li>`).join(''),'pain');
+html+=sec('sd sec-secondary',LBL.diff[L],'+',k.diff[L].map(x=>`<li>${x}</li>`).join(''),'diff');
+if(k.persona)html+=sec('sper sec-secondary',LBL.persona[L],'&#9787;',k.persona[L].map(x=>`<li><strong>${x.role} ${x.priority==='high'?'&#9733;':''}</strong> ${x.msg}</li>`).join(''),'persona');
+if(k.roi)html+=sec('sroi sec-secondary',LBL.roi[L],'&#8593;',k.roi[L].map(x=>`<li>${x}</li>`).join(''),'roi');
 } else {
 // AE Full Mode
 html+=sec('sv',L==='en'?'Opportunity Fit Check':'Opportunity-Passung','Q',k.qual[L].map(x=>`<li>${x}</li>`).join(''),'qual');
 if(k.persona)html+=sec('sper',LBL.persona[L],'&#9787;',k.persona[L].map(x=>`<li><strong>${x.role} ${x.priority==='high'?'&#9733;':''}</strong> ${x.msg}</li>`).join(''),'persona');
 // AE: Stakeholder Map (if available)
 if(k.stakeholderMap&&k.stakeholderMap[L]){
-  html+=sec('sper',L==='en'?'Stakeholder Map':'Stakeholder-Map','&#9878;',k.stakeholderMap[L].map(x=>`<li><strong>${x.role}:</strong> ${x.cares}${x.engage?' <em>'+(L==='en'?'Engage via':'Ansprechen ueber')+':</em> '+x.engage:''}</li>`).join(''),'stakeholderMap');
+  let stData=k.stakeholderMap[L];
+  let chips=stData.map((x,i)=>`<span class="stake-chip" onclick="filterStake(${i},'stakeholderMap')">${x.role}</span>`).join('');
+  let rows=stData.map((x,i)=>`<li class="stake-item" data-stake-idx="${i}"><strong>${x.role}:</strong> ${x.cares}${x.engage?' <em>'+(L==='en'?'Engage via':'Ansprechen ueber')+':</em> '+x.engage:''}</li>`).join('');
+  html+=`<div class="sec sper" data-sec="stakeholderMap"><div class="sh" onclick="togSec('stakeholderMap')"><div class="ic">&#9878;</div><h3>${L==='en'?'Stakeholder Map':'Stakeholder-Map'}</h3><button class="cp-btn" onclick="event.stopPropagation();copySection('stakeholderMap')">${lang==='de'?'Kopieren':'Copy'}</button><div class="sh-tog${collapsed.stakeholderMap?' collapsed':''}" id="tog-stakeholderMap">&#9660;</div></div><div class="sb${collapsed.stakeholderMap?' hidden':''}" id="sb-stakeholderMap"><div class="stake-filters">${chips}</div><ul>${rows}</ul></div></div>`;
 }
 html+=sec('sp',LBL.pain[L],'!',k.pain[L].map(x=>`<li>${x}</li>`).join(''),'pain');
 html+=sec('sq',LBL.questions[L],'?',k.questions[L].map(x=>`<li><strong>[${x.t}]</strong> ${x.q}</li>`).join(''),'questions');
@@ -1595,6 +2428,7 @@ function copySection(secId){
   navigator.clipboard.writeText(text).then(()=>{
     let btn=el.closest('.sec').querySelector('.cp-btn');
     if(btn){btn.textContent=lang==='de'?'Kopiert!':'Copied!';btn.classList.add('copied');setTimeout(()=>{btn.textContent=lang==='de'?'Kopieren':'Copy';btn.classList.remove('copied');},1500);}
+    if(secId.indexOf('Dont')>-1||secId==='sdeDontQ'||secId==='aeDontQ'){eeToast('Smart. Knowing what NOT to say is half the battle.');}
   });
 }
 
@@ -2524,7 +3358,7 @@ _eeSearch.addEventListener('input',function(){
     eeToast('\uD83C\uDFAC This IS the demo.');
     this.value='';clS();
   } else if(v==='help'){
-    eeToast('\uD83E\uDD14 That\u2019s what this whole thing is for.');
+    eeToast('You\'re holding it. This IS the help.');
     this.value='';clS();
   } else if(v==='sap'){
     eeLogoGlow();
@@ -2532,15 +3366,51 @@ _eeSearch.addEventListener('input',function(){
   } else if(v==='matrix'){
     eeMatrix();
     this.value='';clS();
+  } else if(v==='pipeline'||v==='rain'){
+    eePipelineRain();
+    this.value='';clS();
+  } else if(v==='comic'||v==='papyrus'){
+    eeComicSans();
+    this.value='';clS();
+  } else if(v==='hacker'||v==='neo'){
+    eeHackerMode();
+    this.value='';clS();
+  } else if(v==='quota'){
+    eeToast('We don\'t talk about quota here. Only pipeline.');
+    this.value='';clS();
+  } else if(v==='friday'){
+    eeToast('No cold calls on Friday after 3pm. That\'s not a rule, it\'s a religion.');
+    this.value='';clS();
   } else if(_competitors.some(c=>v===c)){
     let ovl=document.getElementById('eeRedOvl');
     ovl.style.opacity='1';
     ovl.style.animation='eeRedBlink .18s ease-in-out 4';
-    eeToast('\uD83D\uDEAB We don\'t do that here.');
+    eeToast('Know thy enemy. Respect.');
     setTimeout(()=>{ovl.style.animation='';ovl.style.opacity='0';},900);
     this.value='';clS();
   }
 });
+// Easter egg: Click SAP logo on role screen 5 times for rainbow behind cards
+let _rsLogoClicks=0,_rsLogoTimer=null;
+document.querySelector('.rs-logo').addEventListener('click',function(e){
+  e.stopPropagation();
+  _rsLogoClicks++;
+  clearTimeout(_rsLogoTimer);
+  _rsLogoTimer=setTimeout(function(){_rsLogoClicks=0;},2000);
+  if(_rsLogoClicks>=5){
+    _rsLogoClicks=0;
+    var cards=document.querySelectorAll('.rs-card');
+    cards.forEach(function(card,i){
+      setTimeout(function(){
+        card.classList.add('rainbow-wave');
+        setTimeout(function(){card.classList.remove('rainbow-wave');},1800);
+      },i*200);
+    });
+    eeToast('You found it. The rainbow. You legend.');
+  }
+});
+
+
 
 // Easter egg: mode toggle 10 rapid clicks
 let _modeClicks=0,_modeTimer=null;
@@ -2553,6 +3423,7 @@ document.querySelector('.mode-toggle').addEventListener('click',function(){
     eeToast('\uD83E\uDD2F Pick one. Commit.');
   }
 });
+
 
 // Easter egg: text selection 12 times
 let _selCount=0,_selTimer=null;
@@ -2619,7 +3490,7 @@ resetIdle();
 // Easter egg: scroll to bottom of kit
 let _kv=document.getElementById('kV');
 _kv.addEventListener('scroll',function(){
-  if(this.scrollHeight-this.scrollTop-this.clientHeight<5 && this.scrollHeight>500){
+  if(this.scrollHeight-this.scrollTop-this.clientHeight<5 && this.scrollHeight>500 && viewMode!=='prep'){
     let f=this.querySelector('.kf');
     if(f&&!f.dataset.ee){
       f.dataset.ee='1';
@@ -2760,6 +3631,107 @@ function eeLogoGlow(){
   logo.style.filter='drop-shadow(0 0 12px rgba(0,112,242,.8)) drop-shadow(0 0 24px rgba(0,184,241,.5))';
   setTimeout(()=>{logo.style.filter='';logo.style.transition='transform .15s';},1500);
 }
+
+// Easter egg: Pipeline Rain (type "pipeline" or "rain")
+var _rainTimer=null;
+function eePipelineRain(){
+  let container=document.getElementById('eePipelineRain');
+  // Clear any existing rain first
+  if(_rainTimer){clearTimeout(_rainTimer);_rainTimer=null;}
+  container.innerHTML='';
+  container.classList.remove('active');
+  void container.offsetWidth; // force reflow
+  container.classList.add('active');
+  let symbols=['$','\u20AC','\u00A5','|','\u2588','$','\u20AC','$','|','$'];
+  let drops=60;
+  for(let i=0;i<drops;i++){
+    let drop=document.createElement('span');
+    drop.className='ee-rain-drop';
+    drop.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    drop.style.left=Math.random()*100+'%';
+    drop.style.animationDuration=(1.5+Math.random()*2)+'s';
+    drop.style.animationDelay=(Math.random()*1.5)+'s';
+    drop.style.color=Math.random()>0.5?'#00C853':'#0070F2';
+    container.appendChild(drop);
+  }
+  _rainTimer=setTimeout(function(){container.classList.remove('active');container.innerHTML='';_rainTimer=null;},5000);
+  eeToast('Pipeline is raining. Quota is healing.');
+}
+
+// Easter egg: Comic Sans Mode (type "comic" or "papyrus")
+function eeComicSans(){
+  document.body.classList.add('ee-comic-mode');
+  eeToast('What have you done.');
+  setTimeout(function(){document.body.classList.remove('ee-comic-mode');},5000);
+}
+
+// Easter egg: Hacker/Terminal Mode (type "hacker" or "neo") - role-specific
+function eeHackerMode(){
+  let ovl=document.getElementById('eeHackerOvl');
+  ovl.innerHTML='<div class="ee-hacker-scanline"></div><div class="ee-hacker-content" id="eeHackerContent"></div>';
+  ovl.classList.add('active');
+  let role=currentRole||'ae';
+  let lines=[];
+  if(role==='sde'){
+    lines=[
+      '> ESTEVE_FRAMEWORK v3.1 // COLD OUTREACH MODULE',
+      '> OPERATOR: JAN ESTEVE',
+      '> LOADING 28 SOLUTION KITS... DONE',
+      '> DIALER STATUS: ARMED',
+      '> TRIGGER EVENTS: SCANNING...',
+      '> GATEKEEPER BYPASS: ENABLED',
+      '> OBJECTION HANDLER: PRIMED',
+      '> PIPELINE TARGET: LOCKED',
+      '> STATUS: DIAL. CONNECT. QUALIFY.',
+      '> _'
+    ];
+  } else if(role==='sa'){
+    lines=[
+      '> ESTEVE_FRAMEWORK v3.1 // TECHNICAL ADVISORY MODULE',
+      '> OPERATOR: JAN ESTEVE',
+      '> LOADING 28 SOLUTION ARCHITECTURES... DONE',
+      '> DEMO ENVIRONMENT: PROVISIONED',
+      '> INTEGRATION MAP: RENDERING...',
+      '> KNOWN LIMITATIONS: CATALOGUED',
+      '> POC FRAMEWORK: STANDING BY',
+      '> CUSTOMER LANDSCAPE: ANALYZED',
+      '> STATUS: SHOW THEM THE ART OF THE POSSIBLE.',
+      '> _'
+    ];
+  } else {
+    lines=[
+      '> ESTEVE_FRAMEWORK v3.1 // DEAL EXECUTION MODULE',
+      '> OPERATOR: JAN ESTEVE',
+      '> LOADING 28 SOLUTION KITS... DONE',
+      '> MEDDPICC PROTOCOL: ENGAGED',
+      '> STAKEHOLDER MAP: MULTI-THREADED',
+      '> CHAMPION: IDENTIFIED',
+      '> ECONOMIC BUYER: MAPPED',
+      '> PIPELINE VECTOR: OPTIMIZED',
+      '> STATUS: CLOSE THE LOOP.',
+      '> _'
+    ];
+  }
+  let content=document.getElementById('eeHackerContent');
+  lines.forEach(function(line,i){
+    setTimeout(function(){
+      let el=document.createElement('div');
+      el.className='ee-hacker-line';
+      el.style.animationDelay=(i*0.15)+'s';
+      if(i===lines.length-1){
+        el.innerHTML=line.replace('_','<span class="ee-hacker-cursor"></span>');
+      } else {
+        el.textContent=line;
+      }
+      content.appendChild(el);
+    },i*350);
+  });
+  setTimeout(function(){ovl.classList.remove('active');ovl.innerHTML='';},6500);
+}
+
+
+
+
 
 
 // Feature 4: Compare Kits
@@ -3315,7 +4287,7 @@ function switchEmPersonaTab(idx){
 function openEmail(){
   if(currentRole==='sde')openEmailSDE();
   else if(currentRole==='ae')openEmailAE();
-  else openEmailSDE(); // SA fallback
+  else openEmailSA();
 }
 
 function openEmailSDE(){
@@ -3360,6 +4332,62 @@ function openEmailSDE(){
   document.getElementById('emBody').innerHTML=h;
   document.getElementById('emOverlay').classList.add('show');
   requestAnimationFrame(function(){document.getElementById('emBody').scrollTop=0;});
+  if(document.querySelector('.contact-chip'))document.querySelector('.contact-chip').style.display='none';
+  if(document.getElementById('aiFab'))document.getElementById('aiFab').style.display='none';
+  if(document.getElementById('kitProgress'))document.getElementById('kitProgress').classList.add('hidden');
+}
+
+function openEmailSA(){
+  var k=KITS[LOBS[curLob]][curKit],L=lang,de=L==='de';
+  document.getElementById('emTitle').textContent=(de?'Technische E-Mail Vorlagen':'Technical Email Templates')+' \u2014 '+k.name;
+  var h='';
+  h+='<div style="margin-bottom:20px;padding:16px 20px;background:#F3E8FF;border-radius:10px;border-left:4px solid #7C3AED"><p style="font-size:13px;color:#333;margin:0">'+(de?'<strong>SA-spezifische E-Mails</strong> fuer '+k.name+'. Diese Vorlagen sind fuer technische Nachbereitung, Architektur-Gespraeche und POC-Planung. Passe [Firma], [Name] und spezifische Details an.':'<strong>SA-specific emails</strong> for '+k.name+'. These templates are for technical follow-up, architecture discussions, and POC planning. Replace [Company], [Name] and specific details.')+'</p></div>';
+  var pain1=k.pain[L][0]||'';
+  var painShort=pain1.split(' - ')[0]||pain1.substring(0,60);
+  var diff1=k.diff[L][0]||'';
+  var diff2=k.diff[L][1]||'';
+  var demoStep1=(k.demoFlow&&k.demoFlow[L]&&k.demoFlow[L][0])?k.demoFlow[L][0].step:'';
+  var demoStep2=(k.demoFlow&&k.demoFlow[L]&&k.demoFlow[L][1])?k.demoFlow[L][1].step:'';
+  var limit1=(k.limitations&&k.limitations[L]&&k.limitations[L][0])?k.limitations[L][0]:'';
+  var subj1,body1,subj2,body2,subj3,body3,subj4,body4;
+  var t1,c1,t2,c2,t3,c3,t4,c4;
+  if(de){
+    subj1='Demo-Zusammenfassung: '+k.name+' fuer [Firma]';
+    body1='[Name],\n\ndanke fuer Ihre Zeit in der Demo heute. Hier eine kurze Zusammenfassung was wir gezeigt haben und was das fuer [Firma] bedeutet:\n\nWas wir gezeigt haben:\n'+(demoStep1?'\u2022 '+demoStep1+'\n':'')+''+(demoStep2?'\u2022 '+demoStep2+'\n':'')+'\nWas das fuer Sie bedeutet:\n\u2022 '+diff1+'\n'+(diff2?'\u2022 '+diff2+'\n':'')+'\nOffene Punkte:\n\u2022 [Technische Frage die waehrend der Demo aufkam]\n\u2022 [Integration/Schnittstelle die noch geklaert werden muss]\n\nNaechster Schritt: Ich wuerde vorschlagen einen technischen Deep-Dive zu [spezifisches Thema] zu machen. Waere [Datum] moeglich?\n\nBei Fragen vorab \u2014 jederzeit melden.\n\nGruss,\n[Ihr Name]\nSolution Advisor, SAP';
+    subj2='Architektur-Diskussion: '+k.name+' x [Firma]';
+    body2='[Name],\n\nbasierend auf unserem letzten Gespraech moechte ich einen Termin vorschlagen in dem wir die technische Architektur fuer Ihren Use Case besprechen.\n\nWas ich vorbereiten wuerde:\n\u2022 Integrations-Landschaft: Wie '+k.name+' in Ihre bestehende Systemlandschaft passt\n\u2022 Deployment-Optionen: [Cloud/Hybrid/On-Prem] Szenarien fuer [Firma]\n\u2022 Datenfluss: Schnittstellen zu [bestehende Systeme des Kunden]\n'+(limit1?'\u2022 Bekannte Einschraenkungen: '+limit1+' \u2014 und wie wir damit umgehen\n':'')+'\nWas ich von Ihnen brauche:\n\u2022 Aktuelle Systemlandschaft (grober Ueberblick reicht)\n\u2022 Wichtigste Integrationsanforderungen\n\u2022 Non-functional Requirements (Performance, Verfuegbarkeit, Compliance)\n\nWaere ein 60-Minuten-Termin naechste Woche moeglich? Ideal waere es wenn [technischer Ansprechpartner] dabei ist.\n\nGruss,\n[Ihr Name]\nSolution Advisor, SAP';
+    subj3='POC-Vorschlag: '+k.name+' bei [Firma]';
+    body3='[Name],\n\nnach unseren bisherigen Gespraechen schlage ich einen strukturierten Proof of Concept vor:\n\nScope:\n\u2022 Use Case: [primaerer Use Case aus Discovery]\n\u2022 Datenquelle: [relevantes System/Daten]\n\u2022 Prozess: [spezifischer Geschaeftsprozess]\n\nTimeline:\n\u2022 Woche 1: Umgebung + Datenanbindung\n\u2022 Woche 2\u20133: Konfiguration + Anpassung\n\u2022 Woche 4: Validierung + Ergebnisse\n\nErfolgskriterien:\n\u2022 [Messbare KPI 1 \u2014 z.B. Verarbeitungszeit < X Minuten]\n\u2022 [Messbare KPI 2 \u2014 z.B. Erkennungsrate > Y%]\n\u2022 [Qualitatives Kriterium \u2014 z.B. Akzeptanz durch Endanwender]\n\nVoraussetzungen von [Firma]:\n\u2022 Technischer Ansprechpartner (ca. 4h/Woche)\n\u2022 Zugang zu Testdaten\n\u2022 [Weitere Voraussetzung]\n\nKoennen wir einen Kick-off fuer naechste Woche einplanen?\n\nGruss,\n[Ihr Name]\nSolution Advisor, SAP';
+    subj4='Technische Validierung \u2014 Zusammenfassung '+k.name;
+    body4='[Name],\n\nhier die Zusammenfassung unserer technischen Validierung:\n\nBestaetigt (funktioniert):\n\u2022 [Funktionalitaet 1 \u2014 erfolgreich getestet]\n\u2022 [Funktionalitaet 2 \u2014 Performance innerhalb Anforderungen]\n\u2022 [Integration mit System X \u2014 validiert]\n\nOffene Punkte:\n\u2022 [Punkt 1 \u2014 benoetigt weitere Klaerung mit Produktteam]\n\u2022 [Punkt 2 \u2014 Workaround vorhanden, permanente Loesung auf Roadmap]\n'+(limit1?'\u2022 Bekannte Einschraenkung: '+limit1+'\n':'')+'\nEmpfehlung:\nBasierend auf der Validierung sehe ich einen klaren Fit fuer [primaerer Use Case]. Fuer den Produktivbetrieb empfehle ich:\n\u2022 [Naechster technischer Schritt]\n\u2022 [Sizing/Performance-Test falls noetig]\n\nSoll ich das als formelles Ergebnis-Dokument aufbereiten fuer Ihre interne Entscheidung?\n\nGruss,\n[Ihr Name]\nSolution Advisor, SAP';
+    t1='1. Demo-Nachbereitung';t2='2. Architektur-Diskussion';t3='3. POC/Pilot-Vorschlag';t4='4. Technische Validierung';
+    c1='Nach der Demo: Zusammenfassung + naechster technischer Schritt.';
+    c2='Vor dem Deep-Dive: Architektur-Kontext abfragen, Termin setzen.';
+    c3='Nach positiver Bewertung: Strukturierter POC mit klaren Erfolgskriterien.';
+    c4='Nach dem POC: Was funktioniert, was offen ist, Empfehlung.';
+  } else {
+    subj1='Demo Summary: '+k.name+' for [Company]';
+    body1='[Name],\n\nThank you for your time in today\'s demo. Here is a quick summary of what we covered and what it means for [Company]:\n\nWhat we showed:\n'+(demoStep1?'\u2022 '+demoStep1+'\n':'')+''+(demoStep2?'\u2022 '+demoStep2+'\n':'')+'\nWhat this means for you:\n\u2022 '+diff1+'\n'+(diff2?'\u2022 '+diff2+'\n':'')+'\nOpen items:\n\u2022 [Technical question that came up during the demo]\n\u2022 [Integration/interface that still needs clarification]\n\nNext step: I would suggest a technical deep-dive on [specific topic]. Would [date] work?\n\nFeel free to reach out with any questions beforehand.\n\nBest regards,\n[Your Name]\nSolution Advisor, SAP';
+    subj2='Architecture Discussion: '+k.name+' x [Company]';
+    body2='[Name],\n\nBased on our last conversation, I would like to propose a session where we discuss the technical architecture for your use case.\n\nWhat I would prepare:\n\u2022 Integration landscape: How '+k.name+' fits into your existing system landscape\n\u2022 Deployment options: [Cloud/Hybrid/On-Prem] scenarios for [Company]\n\u2022 Data flow: Interfaces to [customer existing systems]\n'+(limit1?'\u2022 Known limitations: '+limit1+' \u2014 and how we address them\n':'')+'\nWhat I need from you:\n\u2022 Current system landscape (high-level overview is fine)\n\u2022 Key integration requirements\n\u2022 Non-functional requirements (performance, availability, compliance)\n\nWould a 60-minute session next week work? Ideally with [technical counterpart] present.\n\nBest regards,\n[Your Name]\nSolution Advisor, SAP';
+    subj3='POC Proposal: '+k.name+' at [Company]';
+    body3='[Name],\n\nBased on our discussions so far, I am proposing a structured Proof of Concept:\n\nScope:\n\u2022 Use case: [primary use case from discovery]\n\u2022 Data source: [relevant system/data]\n\u2022 Process: [specific business process]\n\nTimeline:\n\u2022 Week 1: Environment setup + data connectivity\n\u2022 Week 2\u20133: Configuration + customization\n\u2022 Week 4: Validation + results\n\nSuccess criteria:\n\u2022 [Measurable KPI 1 \u2014 e.g., processing time < X minutes]\n\u2022 [Measurable KPI 2 \u2014 e.g., detection rate > Y%]\n\u2022 [Qualitative criterion \u2014 e.g., end-user acceptance]\n\nPrerequisites from [Company]:\n\u2022 Technical counterpart (~4h/week)\n\u2022 Access to test data\n\u2022 [Additional prerequisite]\n\nCan we schedule a kick-off for next week?\n\nBest regards,\n[Your Name]\nSolution Advisor, SAP';
+    subj4='Technical Validation Summary \u2014 '+k.name;
+    body4='[Name],\n\nHere is the summary of our technical validation:\n\nConfirmed (works):\n\u2022 [Capability 1 \u2014 successfully tested]\n\u2022 [Capability 2 \u2014 performance within requirements]\n\u2022 [Integration with System X \u2014 validated]\n\nOpen items:\n\u2022 [Item 1 \u2014 requires clarification with product team]\n\u2022 [Item 2 \u2014 workaround available, permanent fix on roadmap]\n'+(limit1?'\u2022 Known limitation: '+limit1+'\n':'')+'\nRecommendation:\nBased on the validation, I see a clear fit for [primary use case]. For production readiness, I recommend:\n\u2022 [Next technical step]\n\u2022 [Sizing/performance test if needed]\n\nShall I prepare this as a formal outcome document for your internal decision?\n\nBest regards,\n[Your Name]\nSolution Advisor, SAP';
+    t1='1. Demo Follow-up';t2='2. Architecture Discussion';t3='3. POC/Pilot Proposal';t4='4. Technical Validation';
+    c1='After the demo: summarize what was shown, propose next technical step.';
+    c2='Before the deep-dive: request architecture context, set the meeting.';
+    c3='After positive evaluation: structured POC with clear success criteria.';
+    c4='After POC: what works, what is open, recommendation.';
+  }
+  h+=buildEmMsgCard(t1,c1,subj1,body1,0);
+  h+=buildEmMsgCard(t2,c2,subj2,body2,1);
+  h+=buildEmMsgCard(t3,c3,subj3,body3,2);
+  h+=buildEmMsgCard(t4,c4,subj4,body4,3);
+  document.getElementById('emBody').innerHTML=h;
+  document.getElementById('emOverlay').classList.add('show');
+  requestAnimationFrame(function(){document.getElementById('emBody').scrollTop=0;});
+  setTimeout(function(){eeToast('Look at you, writing emails. AEs in shambles.');},800);
   if(document.querySelector('.contact-chip'))document.querySelector('.contact-chip').style.display='none';
   if(document.getElementById('aiFab'))document.getElementById('aiFab').style.display='none';
   if(document.getElementById('kitProgress'))document.getElementById('kitProgress').classList.add('hidden');
@@ -3426,7 +4454,8 @@ function startEmailWithIntel(){
   var k=KITS[LOBS[curLob]][curKit],L=lang;
   var cp=r.callPrep||{};
   document.getElementById('aiOverlay').classList.remove('show');
-  document.getElementById('emTitle').innerHTML=(lang==='de'?'E-Mail-Kontakt \u2014 ':'Email Outreach \u2014 ')+k.name+' \u00d7 <span style="color:#0070F2;font-weight:700">'+company+'</span>';
+  var _emailTitlePrefix=currentRole==='sa'?(lang==='de'?'Technische E-Mails \u2014 ':'Technical Emails \u2014 '):(lang==='de'?'E-Mail-Kontakt \u2014 ':'Email Outreach \u2014 ');
+  document.getElementById('emTitle').innerHTML=_emailTitlePrefix+k.name+' \u00d7 <span style="color:#0070F2;font-weight:700">'+company+'</span>';
   var h='';
 
   var personas=[];
@@ -3482,7 +4511,49 @@ function startEmailWithIntel(){
     return buildEmMsgCard(t1,c1,s1,b1,base)+buildEmMsgCard(t2,c2,s2,b2,base+1)+buildEmMsgCard(t3,c3,s3,b3,base+2)+buildEmMsgCard(t4,c4,s4,b4,base+3);
   }
 
-  if(personas.length>1){
+if(currentRole==='sa'){
+    // SA: Technical emails using customer intel
+    var techDiff=diff1;
+    var techLimit=limit1||(k.limitations&&k.limitations[L]&&k.limitations[L][0])||'';
+    var demoS1=(k.demoFlow&&k.demoFlow[L]&&k.demoFlow[L][0])?k.demoFlow[L][0].step:'';
+    var demoS2=(k.demoFlow&&k.demoFlow[L]&&k.demoFlow[L][1])?k.demoFlow[L][1].step:'';
+    var companyContext=focus?(L==='de'?'Habe gesehen dass '+company+' auf '+focus.split('.')[0]+' setzt.':'I noticed '+company+' is focused on '+focus.split('.')[0]+'.'):'';
+    var ts1,tb1,ts2,tb2,ts3,tb3,ts4,tb4,tt1,tc1,tt2,tc2,tt3,tc3,tt4,tc4;
+    if(L==='de'){
+      ts1='Demo-Zusammenfassung: '+k.name+' fuer '+company;
+      tb1=snapshot.mainContact||'[Name]'+',\n\ndanke fuer Ihre Zeit in der Demo. '+companyContext+' Hier was wir gezeigt haben und was es fuer '+company+' bedeutet:\n\nGezeigt:\n'+(demoS1?'\u2022 '+demoS1+'\n':'')+''+(demoS2?'\u2022 '+demoS2+'\n':'')+'\nRelevanz fuer '+company+':\n\u2022 '+techDiff+'\n\u2022 '+painShort+' \u2014 genau das adressiert '+k.name+'\n\nNaechster Schritt: Technischer Deep-Dive zu [spezifisches Thema fuer '+company+']. Waere naechste Woche moeglich?\n\nGruss,\n[Ihr Name]\nSolution Advisor, SAP';
+      ts2='Architektur-Diskussion: '+k.name+' x '+company;
+      tb2=snapshot.mainContact||'[Name]'+',\n\n'+companyContext+'\n\nFuer '+company+' moechte ich besprechen:\n\u2022 Integration in Ihre Landschaft'+(industry?' ('+industry+')':'')+'\n\u2022 Deployment-Optionen passend zu Ihren Anforderungen\n\u2022 Datenfluss und Schnittstellen\n'+(techLimit?'\u2022 Einschraenkung: '+techLimit+' \u2014 und unser Umgang damit\n':'')+'\nWas ich brauche:\n\u2022 Grober Systemlandschaft-Ueberblick\n\u2022 Wichtigste Integrationsanforderungen\n\u2022 NFRs (Performance, Compliance)\n\n60 Minuten naechste Woche moeglich?\n\nGruss,\n[Ihr Name]\nSolution Advisor, SAP';
+      ts3='POC-Vorschlag: '+k.name+' bei '+company;
+      tb3=snapshot.mainContact||'[Name]'+',\n\nnach unseren Gespraechen schlage ich einen POC vor:\n\nScope: [Use Case passend zu '+company+']\nTimeline: 4 Wochen\nErfolgskriterien:\n\u2022 [KPI relevant fuer '+industry+']\n\u2022 [Qualitatives Kriterium]\n\nVon '+company+' benoetigt:\n\u2022 Technischer Ansprechpartner (~4h/Woche)\n\u2022 Zugang zu Testdaten\n\nKick-off naechste Woche?\n\nGruss,\n[Ihr Name]\nSolution Advisor, SAP';
+      ts4='Technische Validierung \u2014 '+k.name+' x '+company;
+      tb4=snapshot.mainContact||'[Name]'+',\n\nhier die Zusammenfassung:\n\nBestaetigt:\n\u2022 [Was in der Demo/POC funktioniert hat]\n\u2022 '+techDiff+'\n\nOffen:\n\u2022 [Offener Punkt]\n'+(techLimit?'\u2022 '+techLimit+'\n':'')+'\nEmpfehlung: Klarer Fit fuer '+company+'. Naechste Schritte:\n\u2022 [Technischer naechster Schritt]\n\nSoll ich ein formelles Ergebnis-Dokument erstellen?\n\nGruss,\n[Ihr Name]\nSolution Advisor, SAP';
+      tt1='1. Demo-Nachbereitung';tt2='2. Architektur-Diskussion';tt3='3. POC-Vorschlag';tt4='4. Technische Validierung';
+      tc1='Nach der Demo: Zusammenfassung + naechster Schritt fuer '+company+'.';
+      tc2='Architektur-Kontext fuer '+company+' erfragen.';
+      tc3='Strukturierter POC-Vorschlag mit Erfolgskriterien.';
+      tc4='Was funktioniert, was offen ist, Empfehlung.';
+    } else {
+      ts1='Demo Summary: '+k.name+' for '+company;
+      tb1=(snapshot.mainContact||'[Name]')+',\n\nThank you for your time in the demo. '+companyContext+' Here is what we covered and what it means for '+company+':\n\nWhat we showed:\n'+(demoS1?'\u2022 '+demoS1+'\n':'')+''+(demoS2?'\u2022 '+demoS2+'\n':'')+'\nRelevance for '+company+':\n\u2022 '+techDiff+'\n\u2022 '+painShort+' \u2014 this is exactly what '+k.name+' addresses\n\nNext step: Technical deep-dive on [specific topic for '+company+']. Would next week work?\n\nBest regards,\n[Your Name]\nSolution Advisor, SAP';
+      ts2='Architecture Discussion: '+k.name+' x '+company;
+      tb2=(snapshot.mainContact||'[Name]')+',\n\n'+companyContext+'\n\nFor '+company+', I would like to discuss:\n\u2022 Integration into your landscape'+(industry?' ('+industry+')':'')+'\n\u2022 Deployment options matching your requirements\n\u2022 Data flow and interfaces\n'+(techLimit?'\u2022 Known limitation: '+techLimit+' \u2014 and how we handle it\n':'')+'\nWhat I need from you:\n\u2022 High-level system landscape overview\n\u2022 Key integration requirements\n\u2022 NFRs (performance, compliance)\n\n60 minutes next week?\n\nBest regards,\n[Your Name]\nSolution Advisor, SAP';
+      ts3='POC Proposal: '+k.name+' at '+company;
+      tb3=(snapshot.mainContact||'[Name]')+',\n\nBased on our discussions, I am proposing a structured POC:\n\nScope: [Use case relevant to '+company+']\nTimeline: 4 weeks\nSuccess criteria:\n\u2022 [KPI relevant to '+industry+']\n\u2022 [Qualitative criterion]\n\nFrom '+company+':\n\u2022 Technical counterpart (~4h/week)\n\u2022 Access to test data\n\nKick-off next week?\n\nBest regards,\n[Your Name]\nSolution Advisor, SAP';
+      ts4='Technical Validation Summary \u2014 '+k.name+' x '+company;
+      tb4=(snapshot.mainContact||'[Name]')+',\n\nHere is the summary:\n\nConfirmed:\n\u2022 [What worked in demo/POC]\n\u2022 '+techDiff+'\n\nOpen:\n\u2022 [Open item]\n'+(techLimit?'\u2022 '+techLimit+'\n':'')+'\nRecommendation: Clear fit for '+company+'. Next steps:\n\u2022 [Next technical step]\n\nShall I prepare a formal outcome document?\n\nBest regards,\n[Your Name]\nSolution Advisor, SAP';
+      tt1='1. Demo Follow-up';tt2='2. Architecture Discussion';tt3='3. POC Proposal';tt4='4. Technical Validation';
+      tc1='After the demo: summarize + next step for '+company+'.';
+      tc2='Request architecture context from '+company+'.';
+      tc3='Structured POC proposal with success criteria.';
+      tc4='What works, what is open, recommendation.';
+    }
+    h+=buildEmMsgCard(tt1,tc1,ts1,tb1,0);
+    h+=buildEmMsgCard(tt2,tc2,ts2,tb2,1);
+    h+=buildEmMsgCard(tt3,tc3,ts3,tb3,2);
+    h+=buildEmMsgCard(tt4,tc4,ts4,tb4,3);
+  } else {
+    if(personas.length>1){
     h+='<div class="em-persona-tabs" id="emPersonaTabs">';
     personas.forEach(function(p,idx){
       h+='<button class="em-persona-tab'+(idx===0?' active':'')+'" onclick="switchEmPersonaTab('+idx+')">'+p.role+'</button>';
@@ -3528,6 +4599,8 @@ function startEmailWithIntel(){
     h+=buildEmMsgCard(t2,c2,s2,b2,1);
     h+=buildEmMsgCard(t3,c3,s3,b3,2);
     h+=buildEmMsgCard(t4,c4,s4,b4,3);
+  }
+
   }
 
   document.getElementById('emBody').innerHTML=h;
@@ -3722,4 +4795,27 @@ document.getElementById('kV').addEventListener('mouseenter',function(e){var f=e.
 document.getElementById('kV').addEventListener('mouseleave',function(e){var f=e.target.closest('.kf');if(f)hideAbout();},true);
 // Splash screen: show for 1.2s then fade out
 setTimeout(function(){var s=document.getElementById('splash');s.classList.add('out');setTimeout(function(){s.style.display='none';var rs=document.getElementById('roleScreen');if(rs&&!currentRole){rs.classList.add('show');}},500);},1200);
+
+// Mobile tools dropdown
+function toggleMobileTools(e){
+  e.stopPropagation();
+  var m=document.getElementById('mobileToolsMenu');
+  var btn=document.getElementById('mobileToolsBtn');
+  if(m.classList.contains('show')){
+    m.classList.remove('show');
+    return;
+  }
+  // Position menu below the button
+  var r=btn.getBoundingClientRect();
+  m.style.top=(r.bottom+4)+'px';
+  m.style.right='12px';
+  m.classList.add('show');
+  setTimeout(function(){
+    document.addEventListener('click',closeMobileTools,{once:true});
+  },10);
+}
+function closeMobileTools(){
+  var m=document.getElementById('mobileToolsMenu');
+  if(m)m.classList.remove('show');
+}
 </script></body></html>
