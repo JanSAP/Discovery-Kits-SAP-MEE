@@ -1725,18 +1725,16 @@ function openDemoMode(){
     h+='<p style="font-size:13px;line-height:1.7;color:#333">'+k.refArch[L]+'</p>';
   }
   h+='</div>';
-  h+='<div class="demo-panel" style="grid-column:1/-1;margin-top:8px;background:#fff;border:1px solid #E4D9FF;border-radius:10px;padding:16px"><h3 style="font-size:11px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">'+(L==='en'?'Demo Notes (capture questions & follow-ups)':'Demo-Notizen (Fragen & Follow-ups festhalten)')+'</h3><textarea id="demoNotes" style="width:100%;height:80px;border:1px solid #E4D9FF;border-radius:8px;padding:10px;font-size:13px;font-family:inherit;resize:vertical;color:#333" placeholder="'+(L==='en'?'Capture prospect questions, follow-up items, technical concerns...':'Fragen des Prospects, Follow-up-Punkte, technische Bedenken festhalten...')+'"></textarea><div style="display:flex;gap:8px;margin-top:8px"><button onclick="_copyNotes(\'demoNotes\')" style="padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid #E4D9FF;background:#F8F6FF;cursor:pointer;color:#7C3AED">'+(L==='en'?'Copy Notes':'Notizen kopieren')+'</button></div></div>';
+  h+='<div class="demo-panel" style="grid-column:1/-1;margin-top:8px;background:#fff;border:1px solid #E4D9FF;border-radius:10px;padding:16px"><h3 style="font-size:11px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">'+(L==='en'?'Demo Notes (capture questions & follow-ups)':'Demo-Notizen (Fragen & Follow-ups festhalten)')+'</h3><textarea id="demoNotes" style="width:100%;height:80px;border:1px solid #E4D9FF;border-radius:8px;padding:10px;font-size:13px;font-family:inherit;resize:vertical;color:#333" placeholder="'+(L==='en'?'Capture prospect questions, follow-up items, technical concerns...':'Fragen des Prospects, Follow-up-Punkte, technische Bedenken festhalten...')+'"></textarea><div style="display:flex;gap:8px;margin-top:8px"><button onclick="_copyNotes(\'demoNotes\')" style="padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid #E4D9FF;background:#F8F6FF;cursor:pointer;color:#7C3AED">'+(L==='en'?'Copy Notes':'Notizen kopieren')+'</button><button onclick="_clearNotes(\'demo\',\'\')" style="padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid #E4D9FF;background:#fff;cursor:pointer;color:#7C3AED">'+(L==='en'?'Clear':'Leeren')+'</button></div></div>';
   document.getElementById('demoBody').innerHTML=h;
   document.getElementById('demoOverlay').classList.add('show');
+  _restoreNotes('demo','');
   if(document.querySelector('.contact-chip'))document.querySelector('.contact-chip').style.display='none';
   if(document.getElementById('aiFab'))document.getElementById('aiFab').style.display='none';
 }
 function closeDemoMode(force){
-  var notes=document.getElementById('demoNotes');
-  if(!force&&notes&&notes.value.trim()){
-    var msg=lang==='de'?'Du hast ungespeicherte Notizen. Moechtest du den Demo-Modus wirklich verlassen?\n\nDeine Notizen gehen verloren.':'You have unsaved notes. Are you sure you want to leave Demo Mode?\n\nYour notes will be lost.';
-    if(!confirm(msg))return;
-  }
+  var _company=_aiCallMode&&_aiResult?document.getElementById('aiCompany').value.trim():'';
+  _saveNotes('demo',_company);
   document.getElementById('demoOverlay').classList.remove('show');
   if(document.querySelector('.contact-chip'))document.querySelector('.contact-chip').style.display='';
   if(document.getElementById('aiFab'))document.getElementById('aiFab').style.display='';
@@ -1810,9 +1808,10 @@ function openColdCallMode(){
   });
   h+='</div></div>';
   // Notes section
-  h+='<div class="oncall-notes-section" style="grid-column:1/-1"><h3 style="margin:0 0 8px;font-size:12px;font-weight:600">'+(L==='en'?'Quick Notes':'Notizen')+'</h3><textarea id="coldcallNotes" placeholder="'+(L==='en'?'Jot down key points...':'Wichtige Punkte notieren...')+'" style="width:100%;min-height:70px;border:1px solid #E5E7EB;border-radius:8px;padding:10px;font-size:13px;resize:vertical;font-family:inherit"></textarea><div style="margin-top:8px;display:flex;gap:8px"><button onclick="_copyNotes(\x27coldcallNotes\x27)" style="font-size:11px;padding:6px 14px;border-radius:6px;border:1px solid #E5E7EB;background:#fff;cursor:pointer">'+(L==='en'?'Copy Notes':'Notizen kopieren')+'</button></div></div>';
+  h+='<div class="oncall-notes-section" style="grid-column:1/-1"><h3 style="margin:0 0 8px;font-size:12px;font-weight:600">'+(L==='en'?'Quick Notes':'Notizen')+'</h3><textarea id="coldcallNotes" placeholder="'+(L==='en'?'Jot down key points...':'Wichtige Punkte notieren...')+'" style="width:100%;min-height:70px;border:1px solid #E5E7EB;border-radius:8px;padding:10px;font-size:13px;resize:vertical;font-family:inherit"></textarea><div style="margin-top:8px;display:flex;gap:8px"><button onclick="_copyNotes(\x27coldcallNotes\x27)" style="font-size:11px;padding:6px 14px;border-radius:6px;border:1px solid #E5E7EB;background:#fff;cursor:pointer">'+(L==='en'?'Copy Notes':'Notizen kopieren')+'</button><button onclick="_clearNotes(\x27cold\x27,\x27\x27)" style="font-size:11px;padding:6px 14px;border-radius:6px;border:1px solid #E5E7EB;background:#fff;cursor:pointer">'+(L==='en'?'Clear':'Leeren')+'</button></div></div>';
   document.getElementById('coldcallBody').innerHTML=h;
   document.getElementById('coldcallOverlay').classList.add('show');
+  _restoreNotes('cold','');
   requestAnimationFrame(function(){var b=document.getElementById('coldcallBody');if(b)b.scrollTop=0;});
   if(document.querySelector('.contact-chip'))document.querySelector('.contact-chip').style.display='none';
   if(document.getElementById('aiFab'))document.getElementById('aiFab').style.display='none';
@@ -1824,10 +1823,7 @@ function openColdCallMode(){
   window.addEventListener('beforeunload',window._coldcallNotesWarn);
 }
 function closeColdCallMode(){
-  var notes=document.getElementById('coldcallNotes');
-  if(notes&&notes.value.trim().length>0){
-    if(!confirm(lang==='de'?'Du hast ungespeicherte Notizen. Trotzdem schliessen?':'You have unsaved notes. Close anyway?'))return;
-  }
+  _saveNotes('cold','');
   if(window._coldcallNotesWarn)window.removeEventListener('beforeunload',window._coldcallNotesWarn);
   document.getElementById('coldcallOverlay').classList.remove('show');
   if(document.querySelector('.contact-chip'))document.querySelector('.contact-chip').style.display='';
@@ -2459,8 +2455,39 @@ function buildSecNav(){
 
 // Customer Context AI Modal
 let GROQ_KEY=null;window.addEventListener('message',function(e){if(e.data&&e.data.groqKey)GROQ_KEY=e.data.groqKey;});
-let _aiResult=null;
+let _aiResult=null,_aiCache={},_notesCache={};
 let _aiCallMode=false;
+function _noteKey(mode,company){
+  var kit=KITS[LOBS[curLob]]?KITS[LOBS[curLob]][curKit]:{name:'?'};
+  var key=kit.name+'|'+currentRole+'|'+mode;
+  if(company)key+='|'+company;
+  return key;
+}
+function _saveNotes(mode,company){
+  var ids={demo:['demoNotes'],cold:['coldcallNotes'],oncall:['oncallNotes'],summ:['mtNotes','techNotes']};
+  var fields=ids[mode]||[];
+  var key=_noteKey(mode,company);
+  var data={};
+  var hasContent=false;
+  fields.forEach(function(id){var el=document.getElementById(id);if(el){data[id]=el.value;if(el.value.trim())hasContent=true;}});
+  if(hasContent){var now=new Date();var _months=lang==='de'?['Jan','Feb','Maer','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez']:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];data._ts=now.getDate()+' '+_months[now.getMonth()]+' '+now.getFullYear()+', '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');_notesCache[key]=data;}
+}
+function _restoreNotes(mode,company){
+  var ids={demo:['demoNotes'],cold:['coldcallNotes'],oncall:['oncallNotes'],summ:['mtNotes','techNotes']};
+  var fields=ids[mode]||[];
+  var key=_noteKey(mode,company);
+  var data=_notesCache[key];
+  if(!data)return;
+  setTimeout(function(){fields.forEach(function(id){var el=document.getElementById(id);if(el&&data[id])el.value=data[id];});if(data._ts){var lastField=fields[fields.length-1];var el=document.getElementById(lastField);if(el){var tsEl=el.parentElement.querySelector('.notes-ts');if(!tsEl){tsEl=document.createElement('div');tsEl.className='notes-ts';tsEl.style.cssText='font-size:10px;color:#888;text-align:right;margin-top:4px;font-style:italic';el.parentElement.appendChild(tsEl);}tsEl.textContent=(lang==='de'?'Notizen hinzugefuegt. ':'Notes added. ')+data._ts;}}},0);
+}
+function _clearNotes(mode,company){
+  var ids={demo:['demoNotes'],cold:['coldcallNotes'],oncall:['oncallNotes'],summ:['mtNotes','techNotes']};
+  var fields=ids[mode]||[];
+  fields.forEach(function(id){var el=document.getElementById(id);if(el){el.value='';var tsEl=el.parentElement.querySelector('.notes-ts');if(tsEl)tsEl.remove();}});
+  var key=_noteKey(mode,company);
+  delete _notesCache[key];
+}
+
 
 function openAiModal(){
   var k=KITS[LOBS[curLob]][curKit];
@@ -2569,7 +2596,18 @@ Return ONLY valid JSON with this structure:
   return base+schema;
 })()
 
-  var apiUrl='https://api.groq.com/openai/v1/chat/completions';
+  
+  // In-memory cache: skip API if identical inputs were already analyzed this session
+  var _cacheKey=company+'|'+k.name+'|'+currentRole+'|'+lang+'|'+notes+'|'+url+'|'+personas.join(',');
+  if(_aiCache[_cacheKey]){
+    _aiResult=_aiCache[_cacheKey];
+    renderAiResults(company,k,L);
+    document.getElementById('aiStatus').textContent=lang==='de'?'Aus Cache geladen':'Loaded from cache';
+    btn.classList.remove('loading');btn.disabled=false;
+    return;
+  }
+
+var apiUrl='https://api.groq.com/openai/v1/chat/completions';
   var payload=JSON.stringify({model:'llama-3.3-70b-versatile',messages:[{role:'user',content:prompt}],temperature:0.3,response_format:{type:'json_object'}});
 
   async function callAI(attempt){
@@ -2608,6 +2646,7 @@ Return ONLY valid JSON with this structure:
     var text=data.choices[0].message.content;
     text=text.replace(/```json\s*/g,'').replace(/```\s*/g,'').trim();
     _aiResult=JSON.parse(text);
+    _aiCache[_cacheKey]=_aiResult;
     // Normalize role-specific fields into callPrep for action functions
     if(!_aiResult.callPrep){
       var _r=_aiResult;
@@ -3115,16 +3154,7 @@ function copyAllNotes(){
   });
 }
 function closeSummary(){
-  var hasNotes=false;
-  var mt=document.getElementById('mtNotes');
-  var tn=document.getElementById('techNotes');
-  var so=document.getElementById('summOutput');
-  if(mt&&mt.value.trim().length>0)hasNotes=true;
-  if(tn&&tn.value.trim().length>0)hasNotes=true;
-  if(so&&so.textContent.trim().length>0)hasNotes=true;
-  if(hasNotes){
-    if(!confirm(lang==='de'?'Sie haben ungespeicherte Notizen/Zusammenfassung. Beim Schliessen gehen diese verloren.\n\nHaben Sie alles kopiert?':'You have unsaved notes/summary. Closing will lose them.\n\nDid you copy everything?'))return;
-  }
+  _saveNotes('summ','');
   document.getElementById('summOverlay').classList.remove('active');
 }
 
@@ -4735,9 +4765,10 @@ function startDemoWithIntel(){
     if(r.pocRecommendation.successCriteria){h+='<ul style="margin-top:6px">';r.pocRecommendation.successCriteria.forEach(function(c){h+='<li style="font-size:12px">'+c+'</li>';});h+='</ul>';}
     h+='</div>';
   }
-  h+='<div class="demo-panel" style="grid-column:1/-1;margin-top:8px;background:#fff;border:1px solid #E4D9FF;border-radius:10px;padding:16px"><h3 style="font-size:11px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">'+(L==='en'?'Demo Notes (capture questions & follow-ups)':'Demo-Notizen (Fragen & Follow-ups festhalten)')+'</h3><textarea id="demoNotes" style="width:100%;height:80px;border:1px solid #E4D9FF;border-radius:8px;padding:10px;font-size:13px;font-family:inherit;resize:vertical;color:#333" placeholder="'+(L==='en'?'Capture prospect questions, follow-up items, technical concerns...':'Fragen des Prospects, Follow-up-Punkte, technische Bedenken festhalten...')+'"></textarea><div style="display:flex;gap:8px;margin-top:8px"><button onclick="_copyNotes(\'demoNotes\')" style="padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid #E4D9FF;background:#F8F6FF;cursor:pointer;color:#7C3AED">'+(L==='en'?'Copy Notes':'Notizen kopieren')+'</button></div></div>';
+  h+='<div class="demo-panel" style="grid-column:1/-1;margin-top:8px;background:#fff;border:1px solid #E4D9FF;border-radius:10px;padding:16px"><h3 style="font-size:11px;font-weight:700;color:#7C3AED;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">'+(L==='en'?'Demo Notes (capture questions & follow-ups)':'Demo-Notizen (Fragen & Follow-ups festhalten)')+'</h3><textarea id="demoNotes" style="width:100%;height:80px;border:1px solid #E4D9FF;border-radius:8px;padding:10px;font-size:13px;font-family:inherit;resize:vertical;color:#333" placeholder="'+(L==='en'?'Capture prospect questions, follow-up items, technical concerns...':'Fragen des Prospects, Follow-up-Punkte, technische Bedenken festhalten...')+'"></textarea><div style="display:flex;gap:8px;margin-top:8px"><button onclick="_copyNotes(\'demoNotes\')" style="padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid #E4D9FF;background:#F8F6FF;cursor:pointer;color:#7C3AED">'+(L==='en'?'Copy Notes':'Notizen kopieren')+'</button><button onclick="_clearNotes(\'demo\',\''+company+'\')" style="padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid #E4D9FF;background:#fff;cursor:pointer;color:#7C3AED">'+(L==='en'?'Clear':'Leeren')+'</button></div></div>';
   document.getElementById('demoBody').innerHTML=h;
   document.getElementById('demoOverlay').classList.add('show');
+  _restoreNotes('demo',company);
   if(document.querySelector('.contact-chip'))document.querySelector('.contact-chip').style.display='none';
   if(document.getElementById('aiFab'))document.getElementById('aiFab').style.display='none';
   if(document.getElementById('kitProgress'))document.getElementById('kitProgress').classList.add('hidden');
@@ -4808,7 +4839,7 @@ function startCallWithIntel(){
     h+='<div class="oncall-stats oc-content">'+rois.map(function(x){return '<span class="oncall-stat" onclick="event.stopPropagation();this.classList.toggle(\'used\')" style="cursor:pointer">'+x+'</span>';}).join('')+'</div>';
   }
   h+='<h3 style="margin-top:14px" onclick="this.nextElementSibling.classList.toggle(\'hidden\');this.querySelector(\'.oc-tog\').classList.toggle(\'hidden\')">'+(L==='en'?'Quick Notes':'Notizen')+tog+'</h3>';
-  h+='<div class="oncall-notes oc-content"><textarea id="oncallNotes" placeholder="'+(L==='en'?'Jot down key points... (copy before leaving)':'Wichtige Punkte notieren... (vor Verlassen kopieren)')+'"></textarea><div style="display:flex;align-items:center;gap:12px;margin-top:6px"><button onclick="event.stopPropagation();navigator.clipboard.writeText(document.getElementById(\'oncallNotes\').value);this.textContent=\''+(L==='en'?'Copied!':'Kopiert!')+'\';setTimeout(()=>{this.textContent=\''+(L==='en'?'Copy Notes':'Notizen kopieren')+'\'},1500)" style="background:var(--g3);border:none;padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer">'+(L==='en'?'Copy Notes':'Notizen kopieren')+'</button><span class="oncall-notes-hint">'+(L==='en'?'Not saved \u2014 copy before closing':'Nicht gespeichert \u2014 vor Schliessen kopieren')+'</span></div></div>';
+  h+='<div class="oncall-notes oc-content"><textarea id="oncallNotes" placeholder="'+(L==='en'?'Jot down key points... (copy before leaving)':'Wichtige Punkte notieren... (vor Verlassen kopieren)')+'"></textarea><div style="display:flex;align-items:center;gap:12px;margin-top:6px"><button onclick="event.stopPropagation();navigator.clipboard.writeText(document.getElementById(\'oncallNotes\').value);this.textContent=\''+(L==='en'?'Copied!':'Kopiert!')+'\';setTimeout(()=>{this.textContent=\''+(L==='en'?'Copy Notes':'Notizen kopieren')+'\'},1500)" style="background:var(--g3);border:none;padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer">'+(L==='en'?'Copy Notes':'Notizen kopieren')+'</button><button onclick="_clearNotes(\'oncall\',document.getElementById(\'aiCompany\').value.trim())" style="background:#fff;border:1px solid #E5E7EB;padding:5px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer">'+(L==='en'?'Clear':'Leeren')+'</button><span class="oncall-notes-hint">'+(L==='en'?'Cached this session \u2014 copy to save permanently':'In Sitzung gespeichert \u2014 kopieren zum dauerhaften Speichern')+'</span></div></div>';
   h+='</div>';
 
   // Do Not Say
@@ -4820,6 +4851,7 @@ function startCallWithIntel(){
 
   document.getElementById('oncallBody').innerHTML=h;
   document.getElementById('oncallOverlay').classList.add('show');
+  _restoreNotes('oncall',company);
   document.querySelector('.contact-chip').style.display='none';
   document.getElementById('aiFab').style.display='none';
   document.getElementById('kitProgress').classList.add('hidden');
@@ -4882,9 +4914,10 @@ function openOnCall(){
   // Call Closing Formula
   h+='<div style="grid-column:1/-1;background:#E1F4FF;border-radius:8px;padding:10px 14px;margin-top:4px;font-size:11.5px;line-height:1.5"><strong>'+(L==='en'?'\u2713 Always close with:':'\u2713 Immer abschliessen mit:')+'</strong> '+(L==='en'?'Their problem \u2192 The outcome you deliver \u2192 What they will see in the demo. Then book it.':'Ihr Problem \u2192 Das Ergebnis das Sie liefern \u2192 Was sie in der Demo sehen. Dann buchen.')+'</div>';
   // Notes
-  h+='<div class="oncall-notes-section" style="grid-column:1/-1"><h3 style="margin:0 0 8px;font-size:12px;font-weight:600">'+(L==='en'?'Quick Notes':'Notizen')+'</h3><textarea id="oncallNotes" placeholder="'+(L==='en'?'Key points from the call...':'Wichtige Punkte...')+'" style="width:100%;min-height:70px;border:1px solid #E5E7EB;border-radius:8px;padding:10px;font-size:13px;resize:vertical;font-family:inherit"></textarea><div style="margin-top:8px;display:flex;gap:8px"><button onclick="_copyNotes(\x27oncallNotes\x27)" style="font-size:11px;padding:6px 14px;border-radius:6px;border:1px solid #E5E7EB;background:#fff;cursor:pointer">'+(L==='en'?'Copy Notes':'Notizen kopieren')+'</button></div></div>';
+  h+='<div class="oncall-notes-section" style="grid-column:1/-1"><h3 style="margin:0 0 8px;font-size:12px;font-weight:600">'+(L==='en'?'Quick Notes':'Notizen')+'</h3><textarea id="oncallNotes" placeholder="'+(L==='en'?'Key points from the call...':'Wichtige Punkte...')+'" style="width:100%;min-height:70px;border:1px solid #E5E7EB;border-radius:8px;padding:10px;font-size:13px;resize:vertical;font-family:inherit"></textarea><div style="margin-top:8px;display:flex;gap:8px"><button onclick="_copyNotes(\x27oncallNotes\x27)" style="font-size:11px;padding:6px 14px;border-radius:6px;border:1px solid #E5E7EB;background:#fff;cursor:pointer">'+(L==='en'?'Copy Notes':'Notizen kopieren')+'</button><button onclick="_clearNotes(\x27oncall\x27,\x27\x27)" style="font-size:11px;padding:6px 14px;border-radius:6px;border:1px solid #E5E7EB;background:#fff;cursor:pointer">'+(L==='en'?'Clear':'Leeren')+'</button></div></div>';
   document.getElementById('oncallBody').innerHTML=h;
   document.getElementById('oncallOverlay').classList.add('show');
+  _restoreNotes('oncall','');
   requestAnimationFrame(function(){var b=document.getElementById('oncallBody');if(b)b.scrollTop=0;});
   if(document.querySelector('.contact-chip'))document.querySelector('.contact-chip').style.display='none';
   if(document.getElementById('aiFab'))document.getElementById('aiFab').style.display='none';
@@ -4893,10 +4926,8 @@ function openOnCall(){
   window.addEventListener('beforeunload',window._oncallNotesWarn);
 }
 function closeOnCall(){
-  var notes=document.getElementById('oncallNotes');
-  if(notes&&notes.value.trim().length>0){
-    if(!confirm(lang==='en'?'You have unsaved notes. If you leave, they will be lost.\n\nDid you copy them?':'Sie haben ungespeicherte Notizen. Beim Verlassen gehen diese verloren.\n\nHaben Sie sie kopiert?')){return;}
-  }
+  var _company=_aiCallMode&&_aiResult?document.getElementById('aiCompany').value.trim():'';
+  _saveNotes('oncall',_company);
   if(window._oncallNotesWarn)window.removeEventListener('beforeunload',window._oncallNotesWarn);
   document.getElementById('oncallOverlay').classList.remove('show');
   if(document.querySelector('.contact-chip'))document.querySelector('.contact-chip').style.display='';
