@@ -2608,7 +2608,7 @@ Return ONLY valid JSON with this structure:
   }
 
 var apiUrl='https://api.groq.com/openai/v1/chat/completions';
-  var payload=JSON.stringify({model:'llama-3.3-70b-versatile',messages:[{role:'user',content:prompt}],temperature:0.3,response_format:{type:'json_object'}});
+  var payload=JSON.stringify({model:'openai/gpt-oss-120b',messages:[{role:'user',content:prompt}],temperature:0.3,response_format:{type:'json_object'}});
 
   async function callAI(attempt){
     if(!GROQ_KEY){document.getElementById('aiStatus').textContent=lang==='de'?'API-Key nicht verfuegbar. Seite neu laden.':'API key not available. Please reload the page.';return null;}
